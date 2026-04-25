@@ -883,7 +883,7 @@ ESTABLISHED → FIN-WAIT-1 → CLOSING → TIME-WAIT → CLOSED
 - **Timeout excedido:** Conexiones en ciertos estados pueden retornar a CLOSED si no hay respuesta
 - **CLOSE-WAIT prolongado:** Indica que la aplicación local no cerró correctamente su socket (posible leak de recursos)
 
-![Image de login](./resources/práctica-05/imagen-02.png)
+![Imagen](./resources/práctica-05/imagen-02.png)
 
 ## 13. Dada la siguiente salida del comando ss, responda:
 
@@ -1251,7 +1251,7 @@ El segmento perdido es el **SYN-ACK** con:
 
 ## 15. Use CORE para armar una topología como la siguiente, sobre la cual deberá realizar:
 
-![Image de login](./resources/práctica-05/imagen-01.png)
+![Imagen](./resources/práctica-05/imagen-01.png)
 
 ### a. En ambos equipos inspeccionar el estado de las conexiones y mantener abiertas ambas ventanas con el comando corriendo para poder visualizar los cambios a medida que se realiza el ejercicio. Ayuda: watch -n1 ’ss -nat’.
 
@@ -1279,7 +1279,7 @@ ncat -l -k -p 8001
 
 Se va a mostrar esto en el terminal del `Servidor` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-03.png)
+![Imagen](./resources/práctica-05/imagen-03.png)
 
 ### c. Desde CLIENTE1 conectarse a dicho servicio utilizando también la herramienta ncat. Inspeccione el estado de las conexiones.
 
@@ -1291,11 +1291,11 @@ ncat 10.0.0.20 8001
 
 Se va a mostrar esto en el terminal del `Servidor` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-04.png)
+![Imagen](./resources/práctica-05/imagen-04.png)
 
 Se va a mostrar esto en el terminal del `Cliente1` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-05.png)
+![Imagen](./resources/práctica-05/imagen-05.png)
 
 ### d. Iniciar otra conexión desde CLIENTE1 de la misma manera que la anterior y verificar el estado de las conexiones. ¿De qué manera puede identificar cada conexión?
 
@@ -1307,11 +1307,11 @@ ncat 10.0.0.20 8001
 
 Se va a mostrar esto en el terminal del `Servidor` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-06.png)
+![Imagen](./resources/práctica-05/imagen-06.png)
 
 Se va a mostrar esto en el terminal del `Cliente1` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-07.png)
+![Imagen](./resources/práctica-05/imagen-07.png)
 
 Dado que ambas conexiones pueden existir simultáneamente podemos identificarlas porque **los puertos de origen (efímeros) son diferentes**. La primera conexión utiliza el puerto origen `50632` y la segunda conexión utiliza el puerto origen `53270`, mientras que ambas se conectan al mismo puerto destino `8001`.
 
@@ -1439,11 +1439,11 @@ Sin cerrar ninguna de las 5 terminales, vamos a la ultima conexión creada para 
 
 Se va a mostrar esto en el terminal del `Servidor` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-08.png)
+![Imagen](./resources/práctica-05/imagen-08.png)
 
 Se va a mostrar esto en el terminal del `Cliente1` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-09.png)
+![Imagen](./resources/práctica-05/imagen-09.png)
 
 #### II. Corta el servicio de ncat en el servidor (Ctrl+C). Evalúe los estados de las conexiones en ambos equipos.
 
@@ -1451,11 +1451,11 @@ Sin cerrar ninguna de las 5 terminales, vamos a la terminal del `Servidor` donde
 
 Se va a mostrar esto en el terminal del `Servidor` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-10.png)
+![Imagen](./resources/práctica-05/imagen-10.png)
 
 Se va a mostrar esto en el terminal del `Cliente1` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-11.png)
+![Imagen](./resources/práctica-05/imagen-11.png)
 
 #### II. Cierra la conexión en el cliente. Evalúe nuevamente los estados de las conexiones.
 
@@ -1463,8 +1463,8 @@ Sin cerrar ninguna de las 5 terminales, vamos a la terminal del `Cliente1` donde
 
 Se va a mostrar esto en el terminal del `Servidor` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-12.png)
+![Imagen](./resources/práctica-05/imagen-12.png)
 
 Se va a mostrar esto en el terminal del `Cliente1` donde se ejecutó `watch -n1 ’ss -nat’`:
 
-![Image de login](./resources/práctica-05/imagen-13.png)
+![Imagen](./resources/práctica-05/imagen-13.png)

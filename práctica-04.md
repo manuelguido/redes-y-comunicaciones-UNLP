@@ -142,21 +142,21 @@ Autenticación: Normal password
 
 **Alumno POP:**
 
-![Image de login](./resources/práctica-04/imagen-02.png)
+![Imagen](./resources/práctica-04/imagen-02.png)
 
 **Alumno IMAP:**
 
-![Image de login](./resources/práctica-04/imagen-03.png)
+![Imagen](./resources/práctica-04/imagen-03.png)
 
 **NOTA IMPORTANTE**
 
 **Te puede pasar que cuando crees la primera cuenta de email no te muestre el menú para crear una nueva cuenta como en la siguiente imagen:**
 
-![Image de login](./resources/práctica-04/imagen-04.png)
+![Imagen](./resources/práctica-04/imagen-04.png)
 
 **Simplemente hacé click derecho y habilitá a `Menu Bar`:**
 
-![Image de login](./resources/práctica-04/imagen-05.png)
+![Imagen](./resources/práctica-04/imagen-05.png)
 
 ### a. Verificar el correcto funcionamiento enviando un email desde el cliente de una cuenta a la otra y luego desde la otra responder el mail hacia la primera.
 
@@ -168,7 +168,7 @@ Autenticación: Normal password
 
 Captura:
 
-![Image de login](./resources/práctica-04/imagen-06.png)
+![Imagen](./resources/práctica-04/imagen-06.png)
 
 **Análisis del intercambio SMTP (Follow TCP Stream):**
 
@@ -346,7 +346,7 @@ El intercambio demuestra el modelo **"push"** de SMTP donde el cliente activamen
 
 Captura:
 
-![Image de login](./resources/práctica-04/imagen-07.png)
+![Imagen](./resources/práctica-04/imagen-07.png)
 
 #### I. Verifique las fuentes del correo recibido para entender cómo se utiliza el header "Content-Type: multipart/mixed" para poder realizar el envío de distintos archivos adjuntos.
 
@@ -473,7 +473,7 @@ El cliente de correo extrae automáticamente la imagen detectando el header `Con
 
 Captura:
 
-![Image de login](./resources/práctica-04/imagen-08.png)
+![Imagen](./resources/práctica-04/imagen-08.png)
 
 **Contexto - Diferencia entre POP e IMAP:**
 
@@ -554,7 +554,7 @@ El cliente POP debe conectarse periódicamente para descargar nuevos mensajes, m
 
 Captura:
 
-![Image de login](./resources/práctica-04/imagen-09.png)
+![Imagen](./resources/práctica-04/imagen-09.png)
 
 **Contexto - Sincronización automática de IMAP:**
 
@@ -1641,7 +1641,7 @@ Los "include:" delegan a otros registros SPF que contienen los bloques de red au
 
 ## 12. Observar el gráfico a continuación y teniendo en cuenta lo siguiente , responder:
 
-![Image de login](./resources/práctica-04/imagen-01.png)
+![Imagen](./resources/práctica-04/imagen-01.png)
 
 - El usuario juan@misitio.com.ar en PC-A desea enviar un mail al usuario alicia@example.com
 - Cada organización tiene su propios servidores de DNS y Mail

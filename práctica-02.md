@@ -6,9 +6,9 @@ Se recomienda hacer un snapshot de la VM antes de empezar a usarla, para poder v
 
 **Credenciales de acceso:**
 
--   Usuario: `redes`
--   Contraseña: `redes`
--   Privilegios de administrador: `sudo`
+- Usuario: `redes`
+- Contraseña: `redes`
+- Privilegios de administrador: `sudo`
 
 > **Importante:** El dominio `redes.unlp.edu.ar` solo existe dentro de la VM provista por la cátedra, no es válido en Internet. Todos los ejercicios que utilicen dicho dominio solo podrán ser resueltos dentro de la VM.
 
@@ -20,10 +20,10 @@ La capa de aplicación es la capa más alta del modelo TCP/IP. Su función princ
 
 Esta capa define protocolos que permiten la comunicación entre programas situados en distintos dispositivos:
 
--   **HTTP/HTTPS**: Para navegación web
--   **SMTP/POP3/IMAP**: Para correo electrónico
--   **FTP/SFTP**: Para transferencia de archivos
--   **DNS**: Para resolución de nombres de dominio
+- **HTTP/HTTPS**: Para navegación web
+- **SMTP/POP3/IMAP**: Para correo electrónico
+- **FTP/SFTP**: Para transferencia de archivos
+- **DNS**: Para resolución de nombres de dominio
 
 Es importante destacar que el usuario no interactúa directamente con la capa de aplicación, sino a través de programas (como navegadores, clientes de correo o gestores de archivos) que utilizan estos protocolos para intercambiar datos con otras aplicaciones a través de la red.
 
@@ -39,37 +39,37 @@ Cuando dos procesos están en la misma máquina, existen múltiples mecanismos d
 
 1. Pipes (tuberías):
 
--   Pipes anónimos: Permiten comunicación unidireccional entre procesos padre e hijo
--   Named pipes (FIFO): Permiten comunicación bidireccional entre procesos no relacionados mediante un archivo especial en el sistema de archivos
+- Pipes anónimos: Permiten comunicación unidireccional entre procesos padre e hijo
+- Named pipes (FIFO): Permiten comunicación bidireccional entre procesos no relacionados mediante un archivo especial en el sistema de archivos
 
 2. Sockets locales:
 
--   Unix domain sockets: Sockets que usan el sistema de archivos local en lugar de la red, más eficientes que los sockets de red para comunicación local
--   Loopback sockets: Uso de la interfaz de loopback (127.0.0.1) para comunicación TCP/UDP local
+- Unix domain sockets: Sockets que usan el sistema de archivos local en lugar de la red, más eficientes que los sockets de red para comunicación local
+- Loopback sockets: Uso de la interfaz de loopback (127.0.0.1) para comunicación TCP/UDP local
 
 3. Memoria compartida:
 
--   Shared memory: Los procesos comparten un segmento de memoria común donde pueden leer y escribir datos directamente
--   Requiere mecanismos de sincronización (semáforos, mutex) para evitar condiciones de carrera
+- Shared memory: Los procesos comparten un segmento de memoria común donde pueden leer y escribir datos directamente
+- Requiere mecanismos de sincronización (semáforos, mutex) para evitar condiciones de carrera
 
 4. Colas de mensajes:
 
--   Message queues: Sistema de colas donde los procesos pueden enviar y recibir mensajes de forma asíncrona
--   Proporcionan comunicación FIFO (First In, First Out) entre procesos
+- Message queues: Sistema de colas donde los procesos pueden enviar y recibir mensajes de forma asíncrona
+- Proporcionan comunicación FIFO (First In, First Out) entre procesos
 
 5. Señales:
 
--   Signals: Mecanismo simple para notificar eventos entre procesos (como terminación, alarmas, etc.)
--   Limitado en cantidad de información que puede transmitir
+- Signals: Mecanismo simple para notificar eventos entre procesos (como terminación, alarmas, etc.)
+- Limitado en cantidad de información que puede transmitir
 
 6. Archivos:
 
--   File-based communication: Los procesos escriben y leen datos desde archivos comunes
--   Método simple pero menos eficiente para intercambio frecuente de datos
+- File-based communication: Los procesos escriben y leen datos desde archivos comunes
+- Método simple pero menos eficiente para intercambio frecuente de datos
 
 7. Semáforos:
 
--   Semaphores: Principalmente usados para sincronización, pero también pueden transmitir información simple entre procesos.
+- Semaphores: Principalmente usados para sincronización, pero también pueden transmitir información simple entre procesos.
 
 La elección del mecanismo depende de factores como velocidad requerida, cantidad de datos, necesidad de sincronización y complejidad de implementación. La memoria compartida suele ser la más rápida, mientras que los pipes y sockets son más simples de implementar.
 
@@ -79,17 +79,17 @@ El modelo Cliente/Servidor es un paradigma de comunicación donde existen dos ti
 
 Cliente:
 
--   Inicia la comunicación solicitando servicios o recursos
--   Generalmente tiene una dirección IP dinámica
--   Se conecta de forma intermitente a la red
--   No proporciona servicios a otros dispositivos
+- Inicia la comunicación solicitando servicios o recursos
+- Generalmente tiene una dirección IP dinámica
+- Se conecta de forma intermitente a la red
+- No proporciona servicios a otros dispositivos
 
 Servidor:
 
--   Responde a las solicitudes de los clientes proporcionando servicios o recursos
--   Tiene una dirección IP fija y conocida
--   Está disponible permanentemente (alta disponibilidad)
--   Puede atender múltiples clientes simultáneamente
+- Responde a las solicitudes de los clientes proporcionando servicios o recursos
+- Tiene una dirección IP fija y conocida
+- Está disponible permanentemente (alta disponibilidad)
+- Puede atender múltiples clientes simultáneamente
 
 Ejemplo de la vida cotidiana: Un restaurante funciona como modelo cliente/servidor, donde los clientes (comensales) solicitan servicios (comida) al servidor (camarero/cocina), que responde proporcionando el servicio solicitado.
 
@@ -109,37 +109,37 @@ El User Agent (Agente de usuario) es una aplicación de software que actúa como
 
 Funciones generales:
 
--   Interfaz de usuario: Proporciona una interfaz gráfica o de línea de comandos para que los usuarios interactúen con servicios de red
--   Interpretación de protocolos: Implementa los protocolos de la capa de aplicación necesarios para comunicarse con los servidores
--   Gestión de solicitudes: Envía peticiones a los servidores en nombre del usuario
--   Procesamiento de respuestas: Recibe, interpreta y presenta las respuestas del servidor al usuario
--   Gestión de estado: Mantiene información sobre la sesión del usuario (cookies, autenticación, etc.)
+- Interfaz de usuario: Proporciona una interfaz gráfica o de línea de comandos para que los usuarios interactúen con servicios de red
+- Interpretación de protocolos: Implementa los protocolos de la capa de aplicación necesarios para comunicarse con los servidores
+- Gestión de solicitudes: Envía peticiones a los servidores en nombre del usuario
+- Procesamiento de respuestas: Recibe, interpreta y presenta las respuestas del servidor al usuario
+- Gestión de estado: Mantiene información sobre la sesión del usuario (cookies, autenticación, etc.)
 
 Ejemplos específicos:
 
 1. Navegador web (HTTP User Agent):
 
--   Interpreta y renderiza HTML, CSS, JavaScript
--   Gestiona cookies y autenticación
--   Realiza peticiones HTTP/HTTPS
--   Ejemplos: Chrome, Firefox, Safari
+- Interpreta y renderiza HTML, CSS, JavaScript
+- Gestiona cookies y autenticación
+- Realiza peticiones HTTP/HTTPS
+- Ejemplos: Chrome, Firefox, Safari
 
 2. Cliente de correo (Email User Agent):
 
--   Gestiona protocolos SMTP, POP3, IMAP
--   Compone, envía y recibe mensajes de correo
--   Ejemplos: Outlook, Thunderbird, Apple Mail
+- Gestiona protocolos SMTP, POP3, IMAP
+- Compone, envía y recibe mensajes de correo
+- Ejemplos: Outlook, Thunderbird, Apple Mail
 
 3. Cliente FTP:
 
--   Implementa el protocolo FTP para transferencia de archivos
--   Proporciona interfaz para navegar directorios remotos
--   Ejemplos: FileZilla, WinSCP
+- Implementa el protocolo FTP para transferencia de archivos
+- Proporciona interfaz para navegar directorios remotos
+- Ejemplos: FileZilla, WinSCP
 
 4. Cliente de línea de comandos:
 
--   curl: Realiza peticiones HTTP, FTP, etc. desde terminal
--   wget: Descarga recursos de servidores web
+- curl: Realiza peticiones HTTP, FTP, etc. desde terminal
+- wget: Descarga recursos de servidores web
 
 Identificación del User Agent: Los servidores pueden identificar qué tipo de agente de usuario está realizando la petición a través de la cabecera "User-Agent" en HTTP, lo que permite personalizar las respuestas según el tipo de cliente.
 
@@ -149,12 +149,12 @@ HTML (HyperText Markup Language) y HTTP (HyperText Transfer Protocol) son dos te
 
 HTML (HyperText Markup Language):
 
--   Definición: Es un lenguaje de marcado que define la estructura y el contenido de las páginas web
--   Función: Describe cómo se debe presentar la información en el navegador mediante etiquetas (tags)
--   Naturaleza: Es un lenguaje de marcado, no un protocolo de comunicación
--   Propósito: Define el formato y la estructura del contenido (texto, imágenes, enlaces, formularios, etc.)
--   Ubicación: Se ejecuta y procesa en el lado del cliente (navegador)
--   Ejemplo:
+- Definición: Es un lenguaje de marcado que define la estructura y el contenido de las páginas web
+- Función: Describe cómo se debe presentar la información en el navegador mediante etiquetas (tags)
+- Naturaleza: Es un lenguaje de marcado, no un protocolo de comunicación
+- Propósito: Define el formato y la estructura del contenido (texto, imágenes, enlaces, formularios, etc.)
+- Ubicación: Se ejecuta y procesa en el lado del cliente (navegador)
+- Ejemplo:
     ```html
     <html>
     	<body>
@@ -166,12 +166,12 @@ HTML (HyperText Markup Language):
 
 HTTP (HyperText Transfer Protocol):
 
--   Definición: Es un protocolo de la capa de aplicación que define cómo se comunican los clientes y servidores web
--   Función: Especifica las reglas para el intercambio de mensajes entre navegadores y servidores web
--   Naturaleza: Es un protocolo de comunicación
--   Propósito: Define cómo solicitar y transferir recursos (páginas HTML, imágenes, archivos, etc.) a través de la red
--   Ubicación: Opera en la comunicación entre cliente y servidor
--   Ejemplo:
+- Definición: Es un protocolo de la capa de aplicación que define cómo se comunican los clientes y servidores web
+- Función: Especifica las reglas para el intercambio de mensajes entre navegadores y servidores web
+- Naturaleza: Es un protocolo de comunicación
+- Propósito: Define cómo solicitar y transferir recursos (páginas HTML, imágenes, archivos, etc.) a través de la red
+- Ubicación: Opera en la comunicación entre cliente y servidor
+- Ejemplo:
     ```bash
     GET /index.html HTTP/1.1
     ```
@@ -180,23 +180,23 @@ Principales diferencias:
 
 1. Propósito:
 
--   HTML: Define QUÉ se muestra y CÓMO se estructura el contenido
--   HTTP: Define CÓMO se transfiere el contenido entre cliente y servidor
+- HTML: Define QUÉ se muestra y CÓMO se estructura el contenido
+- HTTP: Define CÓMO se transfiere el contenido entre cliente y servidor
 
 2. Naturaleza:
 
--   HTML: Lenguaje de marcado estático
--   HTTP: Protocolo de comunicación dinámico
+- HTML: Lenguaje de marcado estático
+- HTTP: Protocolo de comunicación dinámico
 
 3. Ámbito:
 
--   HTML: Formato del documento/contenido
--   HTTP: Mecanismo de transporte/comunicación
+- HTML: Formato del documento/contenido
+- HTTP: Mecanismo de transporte/comunicación
 
 4. Procesamiento:
 
--   HTML: Se procesa en el navegador para renderizar la página
--   HTTP: Se procesa en la comunicación de red para transferir datos
+- HTML: Se procesa en el navegador para renderizar la página
+- HTTP: Se procesa en la comunicación de red para transferir datos
 
 Relación entre ambos: HTTP se utiliza para transferir documentos HTML desde el servidor al cliente. Cuando un navegador solicita una página web, usa HTTP para pedirla al servidor, y el servidor responde enviando el documento HTML correspondiente a través del mismo protocolo HTTP. El navegador luego interpreta el HTML para mostrar la página al usuario.
 
@@ -208,39 +208,39 @@ La información que indica si un mensaje HTTP es de requerimiento o respuesta se
 
 Mensaje de requerimiento:
 
--   Primera línea: Línea de solicitud (request line)
--   Formato: MÉTODO RECURSO VERSIÓN
--   Ejemplo:
+- Primera línea: Línea de solicitud (request line)
+- Formato: MÉTODO RECURSO VERSIÓN
+- Ejemplo:
     ```bash
     GET /index.html HTTP/1.1
     ```
--   Componentes:
-    -   MÉTODO: Indica la acción a realizar (GET, POST, PUT, DELETE, HEAD, etc.)
-    -   RECURSO: Ruta del recurso solicitado (URL path)
-    -   VERSIÓN: Versión del protocolo HTTP utilizada
+- Componentes:
+    - MÉTODO: Indica la acción a realizar (GET, POST, PUT, DELETE, HEAD, etc.)
+    - RECURSO: Ruta del recurso solicitado (URL path)
+    - VERSIÓN: Versión del protocolo HTTP utilizada
 
 Mensaje de respuesta:
 
--   Primera línea: Línea de estado (status line)
--   Formato: VERSIÓN CÓDIGO_ESTADO FRASE_RAZÓN
--   Ejemplo:
+- Primera línea: Línea de estado (status line)
+- Formato: VERSIÓN CÓDIGO_ESTADO FRASE_RAZÓN
+- Ejemplo:
     ```bash
     HTTP/1.1 200 OK
     ```
--   Componentes:
-    -   VERSIÓN: Versión del protocolo HTTP
-    -   CÓDIGO_ESTADO: Número de tres dígitos que indica el resultado (200, 404, 500, etc.)
-    -   FRASE_RAZÓN: Descripción textual del código de estado
+- Componentes:
+    - VERSIÓN: Versión del protocolo HTTP
+    - CÓDIGO_ESTADO: Número de tres dígitos que indica el resultado (200, 404, 500, etc.)
+    - FRASE_RAZÓN: Descripción textual del código de estado
 
 Función de las cabeceras (headers): Las cabeceras proporcionan metadatos adicionales sobre el mensaje y controlan aspectos de la comunicación:
 
--   Información del cliente/servidor: User-Agent, Server
--   Control de caché: Cache-Control, Expires, Last-Modified
--   Tipo de contenido: Content-Type, Content-Length, Content-Encoding
--   Autenticación: Authorization, WWW-Authenticate
--   Control de conexión: Connection, Keep-Alive
--   Cookies: Set-Cookie, Cookie
--   Negociación de contenido: Accept, Accept-Language, Accept-Encoding
+- Información del cliente/servidor: User-Agent, Server
+- Control de caché: Cache-Control, Expires, Last-Modified
+- Tipo de contenido: Content-Type, Content-Length, Content-Encoding
+- Autenticación: Authorization, WWW-Authenticate
+- Control de conexión: Connection, Keep-Alive
+- Cookies: Set-Cookie, Cookie
+- Negociación de contenido: Accept, Accept-Language, Accept-Encoding
 
 ### b. ¿Cuál es su formato? (Ayuda: https://developer.mozilla.org/es/docs/Web/HTTP/Headers)
 
@@ -255,14 +255,14 @@ Estructura del mensaje:
 
 Formato de las cabeceras:
 
--   Sintaxis: Nombre-Cabecera: Valor
--   Ejemplo: Content-Type: text/html; charset=UTF-8
--   Reglas:
-    -   Nombre es case-insensitive (no distingue mayúsculas)
-    -   Separado por dos puntos (:)
-    -   Puede haber espacios después de los dos puntos
-    -   Una cabecera por línea
-    -   Línea vacía marca el fin de las cabeceras
+- Sintaxis: Nombre-Cabecera: Valor
+- Ejemplo: Content-Type: text/html; charset=UTF-8
+- Reglas:
+    - Nombre es case-insensitive (no distingue mayúsculas)
+    - Separado por dos puntos (:)
+    - Puede haber espacios después de los dos puntos
+    - Una cabecera por línea
+    - Línea vacía marca el fin de las cabeceras
 
 **Ejemplo de mensaje de requerimiento:**
 
@@ -296,13 +296,13 @@ Para un requerimiento HTTP/1.1 es necesario incluir información específica:
 
 Cabeceras obligatorias para HTTP/1.1:
 
--   Host: Especifica el nombre del servidor (obligatorio en HTTP/1.1)
+- Host: Especifica el nombre del servidor (obligatorio en HTTP/1.1)
 
 Cabeceras recomendadas:
 
--   User-Agent: Identifica el cliente que realiza la petición
--   Accept: Indica los tipos de contenido que el cliente puede procesar
--   Connection: Especifica el tipo de conexión
+- User-Agent: Identifica el cliente que realiza la petición
+- Accept: Indica los tipos de contenido que el cliente puede procesar
+- Connection: Especifica el tipo de conexión
 
 **El requerimiento completo quedaría:**
 
@@ -317,10 +317,10 @@ Connection: keep-alive
 
 Explicación de cada cabecera:
 
--   Host: www.misitio.com - Identifica el servidor de destino (obligatorio en HTTP/1.1)
--   User-Agent: curl/7.74.0 - Identifica el cliente y su versión
--   Accept: _/_ - Indica que acepta cualquier tipo de contenido
--   Connection: keep-alive - Solicita mantener la conexión abierta para futuras peticiones
+- Host: www.misitio.com - Identifica el servidor de destino (obligatorio en HTTP/1.1)
+- User-Agent: curl/7.74.0 - Identifica el cliente y su versión
+- Accept: _/_ - Indica que acepta cualquier tipo de contenido
+- Connection: keep-alive - Solicita mantener la conexión abierta para futuras peticiones
 
 > **Nota importante:** La cabecera `Host` es fundamental en HTTP/1.1 porque permite el hosting virtual, donde un mismo servidor puede alojar múltiples sitios web con diferentes nombres de dominio.
 
@@ -330,51 +330,51 @@ El comando curl es una herramienta de línea de comandos para transferir datos d
 
 -I (--head):
 
--   Función: Realiza una petición HTTP HEAD en lugar de GET
--   Comportamiento: Solicita solo las cabeceras del recurso, sin descargar el cuerpo del mensaje
--   Uso: Útil para verificar si un recurso existe, obtener metadatos (tamaño, fecha de modificación, tipo de contenido) sin descargar el contenido completo
--   Ejemplo:
+- Función: Realiza una petición HTTP HEAD en lugar de GET
+- Comportamiento: Solicita solo las cabeceras del recurso, sin descargar el cuerpo del mensaje
+- Uso: Útil para verificar si un recurso existe, obtener metadatos (tamaño, fecha de modificación, tipo de contenido) sin descargar el contenido completo
+- Ejemplo:
     ```bash
     curl -I www.ejemplo.com
     ```
--   Ventaja: Ahorra ancho de banda y tiempo al no descargar el contenido completo
+- Ventaja: Ahorra ancho de banda y tiempo al no descargar el contenido completo
 
 -H (--header):
 
--   Función: Permite agregar cabeceras HTTP personalizadas al requerimiento
--   Formato: -H "Nombre-Cabecera: Valor"
--   Uso: Enviar cabeceras específicas como autenticación, tipo de contenido, cookies, etc.
--   Ejemplos:
+- Función: Permite agregar cabeceras HTTP personalizadas al requerimiento
+- Formato: -H "Nombre-Cabecera: Valor"
+- Uso: Enviar cabeceras específicas como autenticación, tipo de contenido, cookies, etc.
+- Ejemplos:
     ```bash
     curl -H "User-Agent: MiApp/1.0" www.ejemplo.com
     curl -H "Authorization: Bearer token123" www.api.com
     curl -H "Content-Type: application/json" www.ejemplo.com
     ```
--   Múltiples cabeceras: Se puede usar varias veces en el mismo comando
+- Múltiples cabeceras: Se puede usar varias veces en el mismo comando
 
 -X (--request):
 
--   Función: Especifica el método HTTP a utilizar en la petición
--   Métodos comunes: GET (por defecto), POST, PUT, DELETE, PATCH, HEAD, OPTIONS
--   Uso: Cambiar el método por defecto (GET) por otro según la necesidad
--   Ejemplos:
+- Función: Especifica el método HTTP a utilizar en la petición
+- Métodos comunes: GET (por defecto), POST, PUT, DELETE, PATCH, HEAD, OPTIONS
+- Uso: Cambiar el método por defecto (GET) por otro según la necesidad
+- Ejemplos:
     ```bash
     curl -X POST www.ejemplo.com
     curl -X DELETE www.api.com/recurso/123
     curl -X PUT www.ejemplo.com/actualizar
     ```
--   Importante: Algunos métodos requieren datos adicionales (POST, PUT)
+- Importante: Algunos métodos requieren datos adicionales (POST, PUT)
 
 -s (--silent):
 
--   Función: Modo silencioso, suprime la barra de progreso y mensajes de error
--   Comportamiento: No muestra estadísticas de descarga, porcentajes, velocidad, etc.
--   Uso: Útil en scripts o cuando solo se necesita la salida del comando sin información adicional
--   Ejemplo:
+- Función: Modo silencioso, suprime la barra de progreso y mensajes de error
+- Comportamiento: No muestra estadísticas de descarga, porcentajes, velocidad, etc.
+- Uso: Útil en scripts o cuando solo se necesita la salida del comando sin información adicional
+- Ejemplo:
     ```bash
     curl -s www.ejemplo.com
     ```
--   Combinación: Frecuentemente se usa con otros parámetros como curl -s -I para obtener solo las cabeceras sin ruido
+- Combinación: Frecuentemente se usa con otros parámetros como curl -s -I para obtener solo las cabeceras sin ruido
 
 **Combinaciones útiles:**
 
@@ -548,10 +548,10 @@ Nos da esta salida:
 
 **Lo que recibió:** El documento HTML completo de la página principal (index.html), que contiene:
 
--   Estructura HTML con DOCTYPE, head y body
--   Metadatos (charset, viewport, description, author)
--   Enlaces a recursos externos (CSS y JavaScript)
--   Contenido de la página (texto, enlaces, estructura)
+- Estructura HTML con DOCTYPE, head y body
+- Metadatos (charset, viewport, description, author)
+- Enlaces a recursos externos (CSS y JavaScript)
+- Contenido de la página (texto, enlaces, estructura)
 
 **Prueba con redirección:**
 
@@ -565,25 +565,25 @@ Al abrir `pagina.html` en un navegador, se ve el contenido textual pero **sin es
 
 **Atributo `href` en tags `<link>`:**
 
--   Se usa para referenciar recursos externos como hojas de estilo CSS
--   Especifica la URL del recurso que debe cargarse
--   Ejemplo del HTML analizado:
+- Se usa para referenciar recursos externos como hojas de estilo CSS
+- Especifica la URL del recurso que debe cargarse
+- Ejemplo del HTML analizado:
     ```html
     <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" /> <link href="./css/style.css" rel="stylesheet" />
     ```
--   El navegador realiza peticiones HTTP GET adicionales para obtener estos archivos CSS
+- El navegador realiza peticiones HTTP GET adicionales para obtener estos archivos CSS
 
 **Atributo `src` en tags `<img>` (no href):**
 
--   Las imágenes usan el atributo `src`, no `href`
--   Especifica la URL de la imagen que debe mostrarse
--   El navegador carga automáticamente la imagen cuando procesa el tag
+- Las imágenes usan el atributo `src`, no `href`
+- Especifica la URL de la imagen que debe mostrarse
+- El navegador carga automáticamente la imagen cuando procesa el tag
 
 **Funcionamiento:**
 
--   Son referencias relativas o absolutas a recursos
--   El navegador las interpreta y realiza peticiones HTTP adicionales automáticamente
--   curl solo descarga el HTML inicial, no sigue estas referencias
+- Son referencias relativas o absolutas a recursos
+- El navegador las interpreta y realiza peticiones HTTP adicionales automáticamente
+- curl solo descarga el HTML inicial, no sigue estas referencias
 
 ### c. Para visualizar la página completa con imágenes como en un navegador, ¿alcanza con realizar un único requerimiento?
 
@@ -612,19 +612,19 @@ Para visualizar la página completa como en un navegador, se necesitan **múltip
 
 **Funcionamiento del navegador:**
 
--   Realiza automáticamente todos los 8 requerimientos
--   **Procesamiento secuencial:** Primero descarga el HTML, lo analiza, identifica recursos y los solicita
--   **Carga paralela:** Puede realizar múltiples requerimientos simultáneamente para optimizar velocidad
--   **Renderizado progresivo:** Va mostrando contenido mientras carga recursos
--   **Gestión de caché:** Evita descargar recursos ya almacenados localmente
+- Realiza automáticamente todos los 8 requerimientos
+- **Procesamiento secuencial:** Primero descarga el HTML, lo analiza, identifica recursos y los solicita
+- **Carga paralela:** Puede realizar múltiples requerimientos simultáneamente para optimizar velocidad
+- **Renderizado progresivo:** Va mostrando contenido mientras carga recursos
+- **Gestión de caché:** Evita descargar recursos ya almacenados localmente
 
 **Funcionamiento de curl (comando previo):**
 
--   Realiza **solo 1 requerimiento** (el HTML principal)
--   **No analiza** el contenido HTML recibido
--   **No sigue** las referencias a otros recursos automáticamente
--   **Salida cruda:** Devuelve solo el HTML sin procesar
--   Para obtener todos los recursos, sería necesario ejecutar curl manualmente para cada uno:
+- Realiza **solo 1 requerimiento** (el HTML principal)
+- **No analiza** el contenido HTML recibido
+- **No sigue** las referencias a otros recursos automáticamente
+- **Salida cruda:** Devuelve solo el HTML sin procesar
+- Para obtener todos los recursos, sería necesario ejecutar curl manualmente para cada uno:
 
 ```bash
 curl www.redes.unlp.edu.ar                    # HTML
@@ -707,19 +707,19 @@ Content-Type: text/html
 
 **Primer comando:** `curl -v -s www.redes.unlp.edu.ar > /dev/null`
 
--   **Método HTTP:** GET
--   **Contenido:** Descarga el contenido completo del recurso (4898 bytes)
--   **Salida:** El contenido HTML se redirige a `/dev/null` (se descarta)
--   **Información visible:** Solo muestra los detalles de conexión y cabeceras debido al parámetro `-v`
--   **Datos transferidos:** `{ [4898 bytes data]`
+- **Método HTTP:** GET
+- **Contenido:** Descarga el contenido completo del recurso (4898 bytes)
+- **Salida:** El contenido HTML se redirige a `/dev/null` (se descarta)
+- **Información visible:** Solo muestra los detalles de conexión y cabeceras debido al parámetro `-v`
+- **Datos transferidos:** `{ [4898 bytes data]`
 
 **Segundo comando:** `curl -I -v -s www.redes.unlp.edu.ar`
 
--   **Método HTTP:** HEAD
--   **Contenido:** Solo solicita las cabeceras, no descarga el cuerpo del recurso
--   **Salida:** Muestra las cabeceras tanto en formato verbose (`<`) como en formato normal
--   **Información visible:** Cabeceras duplicadas (una por `-v` y otra por `-I`)
--   **Datos transferidos:** No hay transferencia del cuerpo del mensaje
+- **Método HTTP:** HEAD
+- **Contenido:** Solo solicita las cabeceras, no descarga el cuerpo del recurso
+- **Salida:** Muestra las cabeceras tanto en formato verbose (`<`) como en formato normal
+- **Información visible:** Cabeceras duplicadas (una por `-v` y otra por `-I`)
+- **Datos transferidos:** No hay transferencia del cuerpo del mensaje
 
 **Principales diferencias:**
 
@@ -736,16 +736,16 @@ Content-Type: text/html
 curl -v -s www.redes.unlp.edu.ar
 ```
 
--   **Resultado:** Se mostraría todo el contenido HTML completo (4898 bytes) mezclado con la información verbose
--   **Problema:** La salida sería muy larga y confusa, combinando información de depuración con el contenido real
--   **Legibilidad:** Difícil de analizar porque se mezclan metadatos con contenido HTML
+- **Resultado:** Se mostraría todo el contenido HTML completo (4898 bytes) mezclado con la información verbose
+- **Problema:** La salida sería muy larga y confusa, combinando información de depuración con el contenido real
+- **Legibilidad:** Difícil de analizar porque se mezclan metadatos con contenido HTML
 
 **Por qué no es necesaria en el segundo comando:**
 
--   **Método HEAD:** Solo retorna cabeceras, no hay cuerpo del mensaje que ocultar
--   **Salida limpia:** La información mostrada es únicamente metadatos (cabeceras HTTP)
--   **Tamaño:** La respuesta es pequeña y relevante para el análisis
--   **Propósito:** El comando `-I` está diseñado específicamente para mostrar solo cabeceras
+- **Método HEAD:** Solo retorna cabeceras, no hay cuerpo del mensaje que ocultar
+- **Salida limpia:** La información mostrada es únicamente metadatos (cabeceras HTTP)
+- **Tamaño:** La respuesta es pequeña y relevante para el análisis
+- **Propósito:** El comando `-I` está diseñado específicamente para mostrar solo cabeceras
 
 > **Razón técnica:** El parámetro `-I` (HEAD) inherentemente evita la descarga del cuerpo, mientras que GET sin redirección mostraría tanto las cabeceras (por `-v`) como todo el contenido HTML.
 
@@ -789,9 +789,9 @@ curl -v -s www.redes.unlp.edu.ar
 
 **Resumen:**
 
--   **Requerimiento:** 3 cabeceras enviadas por el cliente
--   **Respuesta:** 7 cabeceras enviadas por el servidor
--   **Total:** 10 cabeceras intercambiadas en la comunicación
+- **Requerimiento:** 3 cabeceras enviadas por el cliente
+- **Respuesta:** 7 cabeceras enviadas por el servidor
+- **Total:** 10 cabeceras intercambiadas en la comunicación
 
 > **Nota:** La línea de estado `HTTP/1.1 200 OK` no cuenta como cabecera, es la status line de la respuesta.
 
@@ -801,23 +801,23 @@ La cabecera `Date` indica **la fecha y hora en que el mensaje HTTP fue generado 
 
 **Características:**
 
--   Formato: `Day, DD Mon YYYY HH:MM:SS GMT` (siempre en GMT/UTC)
--   Ejemplo: `Date: Sat, 15 Nov 2025 14:47:31 GMT`
--   Es obligatoria en las respuestas HTTP según el estándar RFC 7231
+- Formato: `Day, DD Mon YYYY HH:MM:SS GMT` (siempre en GMT/UTC)
+- Ejemplo: `Date: Sat, 15 Nov 2025 14:47:31 GMT`
+- Es obligatoria en las respuestas HTTP según el estándar RFC 7231
 
 **Usos principales:**
 
--   Control de caché y validación temporal
--   Logs y auditoría del servidor
--   Base para peticiones condicionales con `If-Modified-Since`
+- Control de caché y validación temporal
+- Logs y auditoría del servidor
+- Base para peticiones condicionales con `If-Modified-Since`
 
 ## 11. En HTTP/1.0, ¿cómo sabe el cliente que ya recibió todo el objeto solicitado de manera completa? ¿Y en HTTP/1.1?
 
 **HTTP/1.0:** El cliente sabe que recibió todo el objeto cuando **el servidor cierra la conexión TCP**.
 
--   No existe la cabecera `Content-Length` de forma estándar
--   El fin de la conexión indica el fin de la transmisión
--   Una conexión = un objeto
+- No existe la cabecera `Content-Length` de forma estándar
+- El fin de la conexión indica el fin de la transmisión
+- Una conexión = un objeto
 
 **HTTP/1.1:** El cliente tiene múltiples mecanismos para detectar el fin:
 
@@ -833,33 +833,33 @@ Los códigos de estado HTTP indican el resultado de una petición y se clasifica
 
 **1XX - Informacionales (poco usados):**
 
--   Respuestas provisionales, la petición se está procesando
+- Respuestas provisionales, la petición se está procesando
 
 **2XX - Éxito:**
 
--   **200 OK:** Petición exitosa, el servidor devuelve el recurso solicitado
--   **201 Created:** Recurso creado exitosamente (común en POST/PUT)
--   **204 No Content:** Petición exitosa pero sin contenido que devolver
+- **200 OK:** Petición exitosa, el servidor devuelve el recurso solicitado
+- **201 Created:** Recurso creado exitosamente (común en POST/PUT)
+- **204 No Content:** Petición exitosa pero sin contenido que devolver
 
 **3XX - Redirección:**
 
--   **301 Moved Permanently:** El recurso se movió permanentemente a otra URL
--   **302 Found:** Redirección temporal a otra URL
--   **304 Not Modified:** El recurso no fue modificado (usado con caché)
+- **301 Moved Permanently:** El recurso se movió permanentemente a otra URL
+- **302 Found:** Redirección temporal a otra URL
+- **304 Not Modified:** El recurso no fue modificado (usado con caché)
 
 **4XX - Error del cliente:**
 
--   **400 Bad Request:** Sintaxis de la petición incorrecta
--   **401 Unauthorized:** Se requiere autenticación
--   **403 Forbidden:** El servidor entiende la petición pero la rechaza
--   **404 Not Found:** El recurso solicitado no existe
--   **405 Method Not Allowed:** Método HTTP no permitido para ese recurso
+- **400 Bad Request:** Sintaxis de la petición incorrecta
+- **401 Unauthorized:** Se requiere autenticación
+- **403 Forbidden:** El servidor entiende la petición pero la rechaza
+- **404 Not Found:** El recurso solicitado no existe
+- **405 Method Not Allowed:** Método HTTP no permitido para ese recurso
 
 **5XX - Error del servidor:**
 
--   **500 Internal Server Error:** Error interno del servidor
--   **502 Bad Gateway:** Error en el servidor proxy/gateway
--   **503 Service Unavailable:** Servidor temporalmente no disponible
+- **500 Internal Server Error:** Error interno del servidor
+- **502 Bad Gateway:** Error en el servidor proxy/gateway
+- **503 Service Unavailable:** Servidor temporalmente no disponible
 
 **Significado general:** El primer dígito indica la categoría, los otros dos especifican el tipo exacto de respuesta.
 
@@ -875,9 +875,9 @@ La primera línea de la respuesta es la **línea de estado (status line)**: `HTT
 
 **Información que proporciona:**
 
--   **HTTP/1.1:** Versión del protocolo HTTP utilizada por el servidor
--   **200:** Código de estado numérico que indica éxito
--   **OK:** Frase descriptiva del código de estado
+- **HTTP/1.1:** Versión del protocolo HTTP utilizada por el servidor
+- **200:** Código de estado numérico que indica éxito
+- **OK:** Frase descriptiva del código de estado
 
 ### b. ¿Cuántos encabezados muestra la respuesta?
 
@@ -915,13 +915,13 @@ curl -H "If-Modified-Since: Sun, 19 Mar 2023 19:04:46 GMT" www.redes.unlp.edu.ar
 
 **Explicación:**
 
--   **Para qué sirve:** Es un mecanismo de **validación condicional** que optimiza el tráfico de red
--   **Funcionamiento:** El cliente especifica una fecha y el servidor solo envía el recurso si fue modificado después de esa fecha
--   **Beneficios:**
-    -   Ahorra ancho de banda al evitar transferencias innecesarias
-    -   Reduce la carga del servidor
-    -   Acelera la navegación web mediante caché inteligente
--   **Uso típico:** Los navegadores usan esto automáticamente para gestionar su caché local
+- **Para qué sirve:** Es un mecanismo de **validación condicional** que optimiza el tráfico de red
+- **Funcionamiento:** El cliente especifica una fecha y el servidor solo envía el recurso si fue modificado después de esa fecha
+- **Beneficios:**
+    - Ahorra ancho de banda al evitar transferencias innecesarias
+    - Reduce la carga del servidor
+    - Acelera la navegación web mediante caché inteligente
+- **Uso típico:** Los navegadores usan esto automáticamente para gestionar su caché local
 
 ## 14. Utilizando curl, acceda al sitio www.redes.unlp.edu.ar/restringido/index.php y siga las instrucciones y las pistas que vaya recibiendo hasta obtener la respuesta final. Será de utilidad para resolver este ejercicio poder analizar tanto el contenido de cada página como los encabezados.
 
@@ -1214,47 +1214,47 @@ Diferencias clave observadas:
 
 HTTP/1.0 (punto b):
 
--   Conexiones no persistentes por defecto
--   Cada petición requiere una nueva conexión TCP
--   El servidor envía la respuesta y cierra inmediatamente la conexión
--   En la respuesta aparece: Connection: close
--   Menos eficiente debido al overhead de establecer múltiples conexiones
+- Conexiones no persistentes por defecto
+- Cada petición requiere una nueva conexión TCP
+- El servidor envía la respuesta y cierra inmediatamente la conexión
+- En la respuesta aparece: Connection: close
+- Menos eficiente debido al overhead de establecer múltiples conexiones
 
 HTTP/1.1 (punto c):
 
--   Conexiones persistentes por defecto (Connection: keep-alive implícito)
--   El servidor mantiene la conexión abierta para posibles peticiones adicionales
--   NO aparece Connection: close en los headers
--   Se cierra después de un timeout si no hay más peticiones
--   Más eficiente al reutilizar la misma conexión para múltiples recursos
+- Conexiones persistentes por defecto (Connection: keep-alive implícito)
+- El servidor mantiene la conexión abierta para posibles peticiones adicionales
+- NO aparece Connection: close en los headers
+- Se cierra después de un timeout si no hay más peticiones
+- Más eficiente al reutilizar la misma conexión para múltiples recursos
 
 Comparación de aspectos clave:
 
 Conexiones:
 
--   HTTP/1.0: No persistentes
--   HTTP/1.1: Persistentes por defecto
+- HTTP/1.0: No persistentes
+- HTTP/1.1: Persistentes por defecto
 
 Comportamiento:
 
--   HTTP/1.0: Cierre inmediato tras respuesta
--   HTTP/1.1: Mantiene conexión abierta
+- HTTP/1.0: Cierre inmediato tras respuesta
+- HTTP/1.1: Mantiene conexión abierta
 
 Eficiencia:
 
--   HTTP/1.0: Menor debido al overhead de conexiones
--   HTTP/1.1: Mayor al reutilizar conexiones
+- HTTP/1.0: Menor debido al overhead de conexiones
+- HTTP/1.1: Mayor al reutilizar conexiones
 
 Recursos múltiples:
 
--   HTTP/1.0: Una conexión por recurso
--   HTTP/1.1: Múltiples recursos por conexión
+- HTTP/1.0: Una conexión por recurso
+- HTTP/1.1: Múltiples recursos por conexión
 
 Impacto en rendimiento web:
 
--   HTTP/1.1 permite cargar múltiples recursos (imágenes, CSS, JS) en la misma conexión
--   Reducción significativa de latencia al evitar el establecimiento de nuevas conexiones TCP
--   Menor carga del servidor por reducción del overhead de conexiones
+- HTTP/1.1 permite cargar múltiples recursos (imágenes, CSS, JS) en la misma conexión
+- Reducción significativa de latencia al evitar el establecimiento de nuevas conexiones TCP
+- Menor carga del servidor por reducción del overhead de conexiones
 
 ## 16. En base a lo obtenido en el ejercicio anterior, responda:
 
@@ -1262,10 +1262,10 @@ Impacto en rendimiento web:
 
 El comando telnet establece una conexión TCP directa al puerto 80 del servidor www.redes.unlp.edu.ar. Al ejecutar este comando, se simula manualmente el comportamiento de un cliente HTTP permitiendo:
 
--   Establecer una conexión TCP con el servidor web.
--   Enviar peticiones HTTP directamente escribiendo o pegando el texto del protocolo.
--   Observar las respuestas del servidor en tiempo real.
--   Analizar el comportamiento de las conexiones según la versión de HTTP utilizada.
+- Establecer una conexión TCP con el servidor web.
+- Enviar peticiones HTTP directamente escribiendo o pegando el texto del protocolo.
+- Observar las respuestas del servidor en tiempo real.
+- Analizar el comportamiento de las conexiones según la versión de HTTP utilizada.
 
 Telnet actúa como cliente TCP básico que permite interactuar directamente con el protocolo HTTP sin las abstracciones de herramientas como curl o navegadores web.
 
@@ -1277,8 +1277,8 @@ Método HTTP: GET Recurso solicitado: /http/HTTP-1.1/
 
 La diferencia entre los dos archivos de prueba fue únicamente la versión del protocolo HTTP especificada en la línea de solicitud:
 
--   Punto b: HTTP/1.0
--   Punto c: HTTP/1.1
+- Punto b: HTTP/1.0
+- Punto c: HTTP/1.1
 
 ### c. ¿Qué diferencias notó entre los dos casos? ¿Puede explicar por qué?
 
@@ -1286,13 +1286,13 @@ Las principales diferencias observadas fueron:
 
 Manejo de conexiones:
 
--   HTTP/1.0: La conexión se cerró inmediatamente después de enviar la respuesta completa. Apareció la cabecera "Connection: close" indicando el cierre explícito.
--   HTTP/1.1: La conexión se mantuvo abierta durante un tiempo antes de cerrarse por timeout. No apareció la cabecera "Connection: close".
+- HTTP/1.0: La conexión se cerró inmediatamente después de enviar la respuesta completa. Apareció la cabecera "Connection: close" indicando el cierre explícito.
+- HTTP/1.1: La conexión se mantuvo abierta durante un tiempo antes de cerrarse por timeout. No apareció la cabecera "Connection: close".
 
 Explicación del comportamiento:
 
--   HTTP/1.0 utiliza conexiones no persistentes por defecto, donde cada petición requiere establecer una nueva conexión TCP que se cierra tras completar la respuesta.
--   HTTP/1.1 implementa conexiones persistentes por defecto (keep-alive implícito), manteniendo la conexión abierta para posibles peticiones adicionales, lo que mejora significativamente la eficiencia.
+- HTTP/1.0 utiliza conexiones no persistentes por defecto, donde cada petición requiere establecer una nueva conexión TCP que se cierra tras completar la respuesta.
+- HTTP/1.1 implementa conexiones persistentes por defecto (keep-alive implícito), manteniendo la conexión abierta para posibles peticiones adicionales, lo que mejora significativamente la eficiencia.
 
 ### d. ¿Cuál de los dos casos le parece más eficiente? Piense en el ejercicio donde analizó la cantidad de requerimientos necesarios para obtener una página con estilos, javascripts e imágenes. El caso elegido, ¿puede traer asociado algún problema?
 
@@ -1300,22 +1300,22 @@ HTTP/1.1 es considerablemente más eficiente por las siguientes razones:
 
 Ventajas de HTTP/1.1:
 
--   Reutilización de conexiones TCP para múltiples recursos.
--   Eliminación del overhead de establecimiento de conexión para cada recurso.
--   Reducción significativa de latencia al evitar múltiples handshakes TCP.
--   Menor carga en el servidor al mantener menos conexiones simultaneas.
+- Reutilización de conexiones TCP para múltiples recursos.
+- Eliminación del overhead de establecimiento de conexión para cada recurso.
+- Reducción significativa de latencia al evitar múltiples handshakes TCP.
+- Menor carga en el servidor al mantener menos conexiones simultaneas.
 
 Contexto práctico: Para una página web con 2 CSS, 2 JavaScript y 3 imágenes (8 recursos totales):
 
--   HTTP/1.0: Requiere 8 conexiones TCP separadas, cada una con su overhead de establecimiento y cierre.
--   HTTP/1.1: Utiliza una sola conexión TCP reutilizada para todos los recursos.
+- HTTP/1.0: Requiere 8 conexiones TCP separadas, cada una con su overhead de establecimiento y cierre.
+- HTTP/1.1: Utiliza una sola conexión TCP reutilizada para todos los recursos.
 
 Posibles problemas asociados con HTTP/1.1:
 
--   Head-of-line blocking: Las peticiones deben procesarse secuencialmente en una conexión.
--   Límite en el número de conexiones paralelas por dominio en los navegadores.
--   Recursos que demoran mucho pueden bloquear el pipeline de peticiones.
--   Conexiones mantenidas abiertas consumen memoria del servidor durante períodos de inactividad.
+- Head-of-line blocking: Las peticiones deben procesarse secuencialmente en una conexión.
+- Límite en el número de conexiones paralelas por dominio en los navegadores.
+- Recursos que demoran mucho pueden bloquear el pipeline de peticiones.
+- Conexiones mantenidas abiertas consumen memoria del servidor durante períodos de inactividad.
 
 A pesar de estos inconvenientes, HTTP/1.1 representa una mejora sustancial en eficiencia comparado con HTTP/1.0.
 
@@ -1323,13 +1323,13 @@ A pesar de estos inconvenientes, HTTP/1.1 representa una mejora sustancial en ef
 
 Capture los paquetes utilizando la interfaz con IP 172.28.0.1. (Menú “Capture ->Options”. Luego seleccione la interfaz correspondiente y presione Start).
 
--   Para que el analizador de red sólo nos muestre los mensajes del protocolo http introduciremos la cadena ‘http’ (sin las comillas) en la ventana de especificación de filtros de visualización (display-filter). Si no hiciéramos esto veríamos todo el tráfico que es capaz de capturar nuestra placa de red. De los paquetes que son capturados, aquel que esté seleccionado será mostrado en forma detallada en la sección que está justo debajo. Como sólo estamos interesados en http ocultaremos toda la información que no es relevante para esta práctica (Información de trama, Ethernet, IP y TCP). Desplegar la información correspondiente al protocolo HTTP bajo la leyenda “Hypertext Transfer Protocol”.
--   Para borrar la cache del navegador, deberá ir al menú “Herramientas->Borrar historial reciente”. Alternativamente puede utilizar Ctrl+F5 en el navegador para forzar la petición HTTP evitando el uso de caché del navegador.
--   En caso de querer ver de forma simplificada el contenido de una comunicación http, utilice el botón derecho sobre un paquete HTTP perteneciente al flujo capturado y seleccione la opción Follow TCP Stream.
+- Para que el analizador de red sólo nos muestre los mensajes del protocolo http introduciremos la cadena ‘http’ (sin las comillas) en la ventana de especificación de filtros de visualización (display-filter). Si no hiciéramos esto veríamos todo el tráfico que es capaz de capturar nuestra placa de red. De los paquetes que son capturados, aquel que esté seleccionado será mostrado en forma detallada en la sección que está justo debajo. Como sólo estamos interesados en http ocultaremos toda la información que no es relevante para esta práctica (Información de trama, Ethernet, IP y TCP). Desplegar la información correspondiente al protocolo HTTP bajo la leyenda “Hypertext Transfer Protocol”.
+- Para borrar la cache del navegador, deberá ir al menú “Herramientas->Borrar historial reciente”. Alternativamente puede utilizar Ctrl+F5 en el navegador para forzar la petición HTTP evitando el uso de caché del navegador.
+- En caso de querer ver de forma simplificada el contenido de una comunicación http, utilice el botón derecho sobre un paquete HTTP perteneciente al flujo capturado y seleccione la opción Follow TCP Stream.
 
 ### a. Abra un navegador e ingrese a la URL: www.redes.unlp.edu.ar e ingrese al link en la sección “Capa de Aplicación” llamado “Métodos HTTP”. En lapágina mostrada se visualizan dos nuevos links llamados: Método GET y Método POST. Ambos muestran un formulario como el siguiente:
 
-![Image de login](./resources/práctica-02/imagen-01.png)
+![Imagen](./resources/práctica-02/imagen-01.png)
 
 ### b. Analice el código HTML
 
@@ -1547,6 +1547,7 @@ Content-Type: text/html; charset=UTF-8
 Las principales diferencias entre los mensajes GET y POST son:
 
 Método GET:
+
 - Los datos del formulario se envían en la URL como parámetros de consulta (query string)
 - La línea de solicitud incluye todos los parámetros: GET /http/metodos-lectura-valores.php?form_nombre=Redes&form_apellido=Comunicaciones...
 - No incluye cabecera Content-Type
@@ -1555,6 +1556,7 @@ Método GET:
 - Los datos son visibles en la URL del navegador
 
 Método POST:
+
 - Los datos del formulario se envían en el cuerpo del mensaje HTTP
 - La línea de solicitud es limpia: POST /http/metodos-lectura-valores.php HTTP/1.1
 - Incluye cabecera Content-Type: application/x-www-form-urlencoded
@@ -1563,6 +1565,7 @@ Método POST:
 - Los datos no son visibles en la URL del navegador
 
 Diferencias en las cabeceras:
+
 - POST incluye Origin: http://www.redes.unlp.edu.ar (indica el origen de la petición)
 - POST incluye Content-Type y Content-Length que GET no necesita
 - Ambos incluyen Referer pero apuntan a páginas diferentes (metodo-get.html vs metodo-post.html)
@@ -1570,24 +1573,28 @@ Diferencias en las cabeceras:
 EXTRA - Explicación de las cabeceras específicas:
 
 Content-Type: application/x-www-form-urlencoded
+
 - Indica el tipo de contenido que se envía en el cuerpo del mensaje POST
 - Especifica que los datos están codificados como pares clave-valor separados por ampersand
 - Formato estándar para formularios HTML enviados por POST
 - Permite al servidor interpretar correctamente los datos recibidos
 
 Content-Length: 146
+
 - Especifica la longitud exacta en bytes del cuerpo del mensaje
 - Fundamental en HTTP/1.1 para determinar dónde termina el cuerpo del mensaje
 - Permite al servidor leer exactamente la cantidad correcta de datos
 - En este caso indica que el formulario serializado ocupa 146 bytes
 
 Origin: http://www.redes.unlp.edu.ar
+
 - Indica el dominio de origen desde donde se inició la petición
 - Mecanismo de seguridad para prevenir ataques de tipo CSRF (Cross-Site Request Forgery)
 - Permite al servidor validar que la petición proviene de un origen autorizado
 - Solo aparece en peticiones POST, PUT, DELETE y otras que modifican estado
 
 Referer: http://www.redes.unlp.edu.ar/http/metodo-post.html
+
 - Especifica la URL de la página desde donde se originó la petición
 - Útil para análisis de tráfico web y estadísticas de navegación
 - Permite al servidor conocer el contexto de navegación del usuario
@@ -1598,20 +1605,24 @@ Referer: http://www.redes.unlp.edu.ar/http/metodo-post.html
 Las diferencias observables en el navegador son:
 
 Diferencias en la URL:
+
 - GET: La barra de direcciones muestra todos los datos del formulario como parámetros en la URL: www.redes.unlp.edu.ar/http/metodos-lectura-valores.php?form_nombre=Redes&form_apellido=Comunicaciones&form_mail=redesycomunicaciones%40unlp.com&form_sexo=sexo_masc&form_pass=redes&form_confirma_mail=on
 - POST: La barra de direcciones solo muestra la URL limpia: www.redes.unlp.edu.ar/http/metodos-lectura-valores.php
 
 Comportamiento del navegador:
+
 - GET: Los datos quedan en el historial del navegador y pueden ser marcados como favoritos
 - POST: Los datos no aparecen en el historial, mayor privacidad
 - GET: Si se actualiza la página (F5), se reenvía automáticamente sin advertencia
 - POST: Si se actualiza la página, el navegador pregunta si reenviar los datos del formulario
 
 Seguridad y privacidad:
+
 - GET: Los datos sensibles (como contraseñas) son visibles en la URL, logs del servidor y historial
 - POST: Los datos sensibles van en el cuerpo del mensaje, no visibles en la URL
 
 Contenido de la respuesta:
+
 - Ambos métodos recibieron exactamente la misma respuesta HTML (2652 bytes)
 - El servidor procesó los datos de manera idéntica independientemente del método utilizado
 - La página resultante muestra los mismos valores enviados en ambos casos
@@ -1628,22 +1639,17 @@ HTTP opera como protocolo stateless por diseño, donde cada petición se procesa
 
 Funcionamiento:
 
-Cabecera Set-Cookie del servidor al cliente:
-El servidor incluye esta cabecera en respuestas HTTP para establecer o modificar cookies en el navegador del cliente. Su estructura es Set-Cookie: nombre=valor seguido de atributos opcionales como Domain para especificar el dominio válido, Path para definir la ruta de aplicación, Expires o Max-Age para controlar la duración, Secure para restringir a conexiones HTTPS, HttpOnly para prevenir acceso desde JavaScript, y SameSite para protección contra ataques CSRF.
+Cabecera Set-Cookie del servidor al cliente: El servidor incluye esta cabecera en respuestas HTTP para establecer o modificar cookies en el navegador del cliente. Su estructura es Set-Cookie: nombre=valor seguido de atributos opcionales como Domain para especificar el dominio válido, Path para definir la ruta de aplicación, Expires o Max-Age para controlar la duración, Secure para restringir a conexiones HTTPS, HttpOnly para prevenir acceso desde JavaScript, y SameSite para protección contra ataques CSRF.
 
-Cabecera Cookie del cliente al servidor:
-El navegador envía automáticamente esta cabecera en peticiones subsiguientes que coincidan con los criterios de dominio y ruta de las cookies almacenadas. El formato es Cookie: nombre1=valor1; nombre2=valor2 incluyendo todas las cookies aplicables para esa petición específica.
+Cabecera Cookie del cliente al servidor: El navegador envía automáticamente esta cabecera en peticiones subsiguientes que coincidan con los criterios de dominio y ruta de las cookies almacenadas. El formato es Cookie: nombre1=valor1; nombre2=valor2 incluyendo todas las cookies aplicables para esa petición específica.
 
 Ejemplos:
 
-Gestión de sesiones:
-Un sistema de e-commerce utiliza cookies para mantener el estado de autenticación del usuario mediante un session ID único. Cuando el usuario inicia sesión, el servidor responde con Set-Cookie: sessionid=abc123; HttpOnly; Secure. En peticiones posteriores, el navegador incluye Cookie: sessionid=abc123 permitiendo al servidor identificar la sesión activa.
+Gestión de sesiones: Un sistema de e-commerce utiliza cookies para mantener el estado de autenticación del usuario mediante un session ID único. Cuando el usuario inicia sesión, el servidor responde con Set-Cookie: sessionid=abc123; HttpOnly; Secure. En peticiones posteriores, el navegador incluye Cookie: sessionid=abc123 permitiendo al servidor identificar la sesión activa.
 
-Personalización de experiencia:
-Un sitio web multiidioma establece Set-Cookie: idioma=es; Path=/; Max-Age=31536000 para recordar la preferencia del usuario. El navegador envía Cookie: idioma=es en cada petición, permitiendo al servidor servir contenido en español automáticamente.
+Personalización de experiencia: Un sitio web multiidioma establece Set-Cookie: idioma=es; Path=/; Max-Age=31536000 para recordar la preferencia del usuario. El navegador envía Cookie: idioma=es en cada petición, permitiendo al servidor servir contenido en español automáticamente.
 
-Carrito de compras:
-Una tienda online mantiene Set-Cookie: carrito=item1,item2,item3; Path=/tienda para preservar productos seleccionados entre sesiones, facilitando la experiencia de compra continua.
+Carrito de compras: Una tienda online mantiene Set-Cookie: carrito=item1,item2,item3; Path=/tienda para preservar productos seleccionados entre sesiones, facilitando la experiencia de compra continua.
 
 Contexto de capas:
 
@@ -1661,24 +1667,19 @@ La elección entre formato texto y binario responde a diferentes prioridades de 
 
 Funcionamiento:
 
-Protocolos basados en texto:
-Transmiten mensajes como secuencias de caracteres ASCII o UTF-8 legibles por humanos. Cada elemento del protocolo (métodos, headers, status codes) se representa mediante cadenas de texto separadas por delimitadores específicos como CRLF (Carriage Return Line Feed). La estructura es autodescriptiva: "GET /index.html HTTP/1.1" comunica claramente la acción solicitada. El parsing requiere procesamiento de cadenas y conversión de tipos de datos.
+Protocolos basados en texto: Transmiten mensajes como secuencias de caracteres ASCII o UTF-8 legibles por humanos. Cada elemento del protocolo (métodos, headers, status codes) se representa mediante cadenas de texto separadas por delimitadores específicos como CRLF (Carriage Return Line Feed). La estructura es autodescriptiva: "GET /index.html HTTP/1.1" comunica claramente la acción solicitada. El parsing requiere procesamiento de cadenas y conversión de tipos de datos.
 
-Protocolos binarios:
-Codifican mensajes en estructuras de datos binarias compactas utilizando frames con campos de longitud fija o variable. Los elementos del protocolo se representan mediante valores numéricos y estructuras predefinidas. Un frame binario puede contener type (1 byte), flags (1 byte), stream identifier (4 bytes) y payload de longitud variable. El parsing es directo mediante operaciones bitwise sin conversión de cadenas.
+Protocolos binarios: Codifican mensajes en estructuras de datos binarias compactas utilizando frames con campos de longitud fija o variable. Los elementos del protocolo se representan mediante valores numéricos y estructuras predefinidas. Un frame binario puede contener type (1 byte), flags (1 byte), stream identifier (4 bytes) y payload de longitud variable. El parsing es directo mediante operaciones bitwise sin conversión de cadenas.
 
 Ejemplos:
 
 Clasificación de versiones HTTP:
 
-HTTP/1.0 como protocolo texto:
-Implementa comunicación completamente textual donde cada petición incluye elementos como "GET /recurso HTTP/1.0" seguido de headers legibles "Host: servidor.com" y separación clara mediante líneas vacías entre headers y body. Una herramienta simple como telnet permite interactuar directamente con el servidor enviando comandos en texto plano.
+HTTP/1.0 como protocolo texto: Implementa comunicación completamente textual donde cada petición incluye elementos como "GET /recurso HTTP/1.0" seguido de headers legibles "Host: servidor.com" y separación clara mediante líneas vacías entre headers y body. Una herramienta simple como telnet permite interactuar directamente con el servidor enviando comandos en texto plano.
 
-HTTP/1.1 como protocolo texto:
-Mantiene la filosofía textual de HTTP/1.0 incorporando nuevas capacidades como persistent connections y chunked encoding, pero preservando la representación en caracteres legibles. La compatibilidad hacia atrás con HTTP/1.0 es natural debido al formato compartido. El análisis de tráfico mediante herramientas básicas sigue siendo straightforward.
+HTTP/1.1 como protocolo texto: Mantiene la filosofía textual de HTTP/1.0 incorporando nuevas capacidades como persistent connections y chunked encoding, pero preservando la representación en caracteres legibles. La compatibilidad hacia atrás con HTTP/1.0 es natural debido al formato compartido. El análisis de tráfico mediante herramientas básicas sigue siendo straightforward.
 
-HTTP/2 como protocolo binario:
-Introduce una transformación fundamental utilizando frames binarios que encapsulan la semántica de HTTP/1.1 en estructuras optimizadas. Un message HTTP/1.1 se descompone en múltiples frames: HEADERS frame para metadatos, DATA frame para payload, con multiplexado de streams sobre una conexión única. La compresión HPACK reduce significativamente el overhead de headers repetitivos.
+HTTP/2 como protocolo binario: Introduce una transformación fundamental utilizando frames binarios que encapsulan la semántica de HTTP/1.1 en estructuras optimizadas. Un message HTTP/1.1 se descompone en múltiples frames: HEADERS frame para metadatos, DATA frame para payload, con multiplexado de streams sobre una conexión única. La compresión HPACK reduce significativamente el overhead de headers repetitivos.
 
 Contexto de capas:
 
@@ -1714,7 +1715,7 @@ Comportamiento en HTTP/2:
 HTTP/2 mantiene la semántica de la cabecera Host pero la implementa de forma diferente debido a su naturaleza binaria. En lugar de transmitirse como texto plano, la información del host se codifica en pseudo-headers específicos:
 
 - :authority pseudo-header reemplaza funcionalmente a Host
-- :scheme indica el esquema de la URL (http o https)  
+- :scheme indica el esquema de la URL (http o https)
 - :method especifica el método HTTP
 - :path contiene la ruta y query string
 
@@ -1739,12 +1740,13 @@ Formato correcto:
 
 ```bash
 GET /index.php HTTP/1.1
-Host: www.ejemplo.com  
+Host: www.ejemplo.com
 User-Agent: curl/7.54.0
 
 ```
 
 El requerimiento válido requiere:
+
 - Request line terminada con CRLF
 - Cabecera Host obligatoria
 - Cabeceras adicionales en líneas separadas
@@ -1761,6 +1763,7 @@ Conversión a HTTP/2:
 En HTTP/2, la petición se transforma en frames binarios con pseudo-headers que reemplazan la request line y headers tradicionales:
 
 Pseudo-headers requeridos:
+
 ```bash
 :method: GET
 :scheme: https
@@ -1775,8 +1778,9 @@ El método GET se codifica en el pseudo-header :method. El esquema https se espe
 Representación binaria:
 
 Estos pseudo-headers se codifican en un HEADERS frame usando compresión HPACK. El frame incluye:
+
 - Frame type: HEADERS (0x1)
-- Flags: END_HEADERS (0x4) 
+- Flags: END_HEADERS (0x4)
 - Stream ID: número impar asignado por el cliente
 - Payload: pseudo-headers comprimidos con HPACK
 

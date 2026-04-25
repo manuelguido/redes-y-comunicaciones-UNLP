@@ -295,43 +295,43 @@ Header DNS: Contiene metadatos de la consulta y respuesta incluyendo opcode (tip
 
 Flags DNS principales:
 
--   qr (Query Response): 0=consulta, 1=respuesta
--   aa (Authoritative Answer): Respuesta desde servidor autoritativo
--   rd (Recursion Desired): Cliente solicita resolución recursiva
--   ra (Recursion Available): Servidor soporta recursión
--   tc (Truncated): Mensaje truncado por tamaño
--   cd (Checking Disabled): Validación DNSSEC deshabilitada
--   ad (Authenticated Data): Datos validados con DNSSEC
+- qr (Query Response): 0=consulta, 1=respuesta
+- aa (Authoritative Answer): Respuesta desde servidor autoritativo
+- rd (Recursion Desired): Cliente solicita resolución recursiva
+- ra (Recursion Available): Servidor soporta recursión
+- tc (Truncated): Mensaje truncado por tamaño
+- cd (Checking Disabled): Validación DNSSEC deshabilitada
+- ad (Authenticated Data): Datos validados con DNSSEC
 
 Combinaciones de flags:
 
--   qr+rd+ra: Respuesta recursiva típica desde resolver
--   qr+aa: Respuesta autoritativa directa
--   qr+aa+rd+ra: Servidor autoritativo que también hace recursión
--   qr+tc: Respuesta truncada, requiere consulta TCP
--   rd sin ra: Servidor no soporta recursión
+- qr+rd+ra: Respuesta recursiva típica desde resolver
+- qr+aa: Respuesta autoritativa directa
+- qr+aa+rd+ra: Servidor autoritativo que también hace recursión
+- qr+tc: Respuesta truncada, requiere consulta TCP
+- rd sin ra: Servidor no soporta recursión
 
 Secciones de respuesta:
 
--   QUESTION: Consulta original realizada
--   ANSWER: Registros que responden directamente la consulta
--   AUTHORITY: Servidores DNS autoritativos para el dominio
--   ADDITIONAL: Registros complementarios (direcciones IP de servidores NS)
+- QUESTION: Consulta original realizada
+- ANSWER: Registros que responden directamente la consulta
+- AUTHORITY: Servidores DNS autoritativos para el dominio
+- ADDITIONAL: Registros complementarios (direcciones IP de servidores NS)
 
 Información adicional:
 
--   TTL: Tiempo de vida en caché (segundos)
--   Clase: Típicamente IN (Internet)
--   Tipo: A, AAAA, MX, NS, CNAME, etc.
--   Query time: Latencia de respuesta
--   SERVER: Resolver DNS consultado
+- TTL: Tiempo de vida en caché (segundos)
+- Clase: Típicamente IN (Internet)
+- Tipo: A, AAAA, MX, NS, CNAME, etc.
+- Query time: Latencia de respuesta
+- SERVER: Resolver DNS consultado
 
 #### i. ¿La solicitud fue recursiva? ¿Y la respuesta? ¿Cómo lo sabe?
 
 Sí, tanto la solicitud como la respuesta fueron recursivas. Esto se identifica analizando los flags en el header:
 
--   rd (Recursion Desired): Indica que el cliente solicitó resolución recursiva
--   ra (Recursion Available): Indica que el servidor DNS soporta y procesó la consulta de forma recursiva
+- rd (Recursion Desired): Indica que el cliente solicitó resolución recursiva
+- ra (Recursion Available): Indica que el servidor DNS soporta y procesó la consulta de forma recursiva
 
 El servidor DNS recibió la petición recursiva del cliente y se encargó de realizar todas las consultas iterativas necesarias (a root servers, servidores .ar, y servidores unlp.edu.ar) hasta obtener la respuesta final, devolviendo únicamente el resultado al cliente.
 
@@ -389,16 +389,16 @@ Análisis de la respuesta:
 
 Servidores de correo identificados:
 
--   mail.redes.unlp.edu.ar (172.28.0.90) con prioridad 5
--   mail2.redes.unlp.edu.ar (172.28.0.91) con prioridad 10
+- mail.redes.unlp.edu.ar (172.28.0.90) con prioridad 5
+- mail2.redes.unlp.edu.ar (172.28.0.91) con prioridad 10
 
 Significado de los números de prioridad: Los números 5 y 10 representan valores de prioridad MX donde números menores indican mayor prioridad. El servidor con prioridad 5 (mail.redes.unlp.edu.ar) tiene precedencia sobre el servidor con prioridad 10 (mail2.redes.unlp.edu.ar).
 
 Razones para múltiples servidores MX:
 
--   Redundancia: Si el servidor primario falla, el correo se entrega al secundario
--   Balanceado de carga: Distribuye el tráfico de correo entre múltiples servidores
--   Alta disponibilidad: Garantiza continuidad del servicio de correo electrónico
+- Redundancia: Si el servidor primario falla, el correo se entrega al secundario
+- Balanceado de carga: Distribuye el tráfico de correo entre múltiples servidores
+- Alta disponibilidad: Garantiza continuidad del servicio de correo electrónico
 
 Entrega de correo: Al enviar correo a redes.unlp.edu.ar, el servidor emisor intentará entregar primero a mail.redes.unlp.edu.ar (prioridad 5). Solo si este servidor es inaccesible o rechaza la conexión, se intentará la entrega a mail2.redes.unlp.edu.ar (prioridad 10).
 
@@ -444,8 +444,8 @@ Análisis de la respuesta:
 
 Servidores DNS autoritativos del dominio redes.unlp.edu.ar:
 
--   ns-sv-a.redes.unlp.edu.ar (172.28.0.30)
--   ns-sv-b.redes.unlp.edu.ar (172.28.0.29)
+- ns-sv-a.redes.unlp.edu.ar (172.28.0.30)
+- ns-sv-b.redes.unlp.edu.ar (172.28.0.29)
 
 Observaciones importantes: La sección ADDITIONAL proporciona automáticamente las direcciones IP de los servidores NS, facilitando su contacto directo sin requerir consultas adicionales. Ambos servidores tienen TTL de 86400 segundos (24 horas) para los registros NS, mientras que sus direcciones IP tienen TTL de 604800 segundos (7 días), indicando mayor estabilidad de las direcciones IP comparado con la configuración NS.
 
@@ -469,8 +469,8 @@ No es posible determinar cuál servidor DNS es el primario basándose únicament
 
 La consulta `dig NS redes.unlp.edu.ar` muestra dos servidores autoritativos:
 
--   ns-sv-a.redes.unlp.edu.ar (172.28.0.30)
--   ns-sv-b.redes.unlp.edu.ar (172.28.0.29)
+- ns-sv-a.redes.unlp.edu.ar (172.28.0.30)
+- ns-sv-b.redes.unlp.edu.ar (172.28.0.29)
 
 Limitaciones de los registros NS:
 
@@ -535,10 +535,10 @@ Número de serie: 2020031700
 
 Convención utilizada: El número de serie sigue el formato YYYYMMDDNN donde:
 
--   YYYY = Año (2020)
--   MM = Mes (03 = marzo)
--   DD = Día (17)
--   NN = Número de revisión del día (00 = primera revisión)
+- YYYY = Año (2020)
+- MM = Mes (03 = marzo)
+- DD = Día (17)
+- NN = Número de revisión del día (00 = primera revisión)
 
 Esta convención permite identificar fácilmente cuándo se realizó la última modificación de la zona y cuántas versiones se crearon en el mismo día.
 
@@ -550,10 +550,10 @@ Importancia de la actualización: El número de serie es crítico para el mecani
 
 Casos donde debe actualizarse:
 
--   Agregar, modificar o eliminar cualquier registro DNS de la zona
--   Cambios en configuración de servidores de correo (MX)
--   Modificaciones en subdominios delegados
--   Actualizaciones de direcciones IP de servicios
+- Agregar, modificar o eliminar cualquier registro DNS de la zona
+- Cambios en configuración de servidores de correo (MX)
+- Modificaciones en subdominios delegados
+- Actualizaciones de direcciones IP de servicios
 
 Consecuencias de no actualizarlo: Si no se incrementa el número de serie después de realizar cambios, los servidores secundarios no detectarán las modificaciones y continuarán sirviendo información desactualizada, creando inconsistencias en las respuestas DNS.
 
@@ -574,10 +574,10 @@ Funcionamiento:
 
 Consideraciones para el valor:
 
--   **Valores altos** (como 7 días): Reducen tráfico de red pero aumentan el tiempo de propagación de cambios
--   **Valores bajos** (como 1 hora): Aceleran la propagación pero incrementan la carga de consultas
--   **Zonas dinámicas**: Requieren valores menores para sincronización rápida
--   **Zonas estáticas**: Permiten valores mayores para optimizar recursos
+- **Valores altos** (como 7 días): Reducen tráfico de red pero aumentan el tiempo de propagación de cambios
+- **Valores bajos** (como 1 hora): Aceleran la propagación pero incrementan la carga de consultas
+- **Zonas dinámicas**: Requieren valores menores para sincronización rápida
+- **Zonas estáticas**: Permiten valores mayores para optimizar recursos
 
 El valor de 7 días indica que redes.unlp.edu.ar es una zona relativamente estática donde los cambios no requieren propagación inmediata.
 
@@ -598,10 +598,10 @@ Ventajas del caché negativo:
 
 Ejemplos de uso:
 
--   Consultas por nombres con errores tipográficos
--   Intentos de acceso a subdominios eliminados
--   Ataques de fuerza bruta buscando nombres válidos
--   Aplicaciones que consultan múltiples nombres similares
+- Consultas por nombres con errores tipográficos
+- Intentos de acceso a subdominios eliminados
+- Ataques de fuerza bruta buscando nombres válidos
+- Aplicaciones que consultan múltiples nombres similares
 
 Impacto del valor 24 horas: Un TTL de 24 horas equilibra eficiencia y flexibilidad. Si se crea un nuevo registro durante este período, los resolvers seguirán respondiendo NXDOMAIN hasta que expire el caché negativo, pero este tiempo es razonable para la mayoría de casos de uso sin causar problemas significativos de propagación.
 
@@ -638,10 +638,10 @@ Valor del registro TXT: "HOLA"
 
 Usos de registros TXT: Los registros TXT almacenan texto arbitrario asociado a nombres DNS. Sus principales aplicaciones incluyen:
 
--   **Verificación de propiedad**: Confirmar control de dominios para servicios web
--   **Configuración de email**: SPF (anti-spam), DKIM (autenticación), DMARC (políticas)
--   **Metadatos**: Información descriptiva o configuración de servicios
--   **Propósitos educativos**: Como en este caso, mostrar mensajes simples
+- **Verificación de propiedad**: Confirmar control de dominios para servicios web
+- **Configuración de email**: SPF (anti-spam), DKIM (autenticación), DMARC (políticas)
+- **Metadatos**: Información descriptiva o configuración de servicios
+- **Propósitos educativos**: Como en este caso, mostrar mensajes simples
 
 En este ejercicio, el registro TXT con valor "HOLA" sirve como ejemplo educativo para demostrar el funcionamiento de consultas TXT en DNS.
 
@@ -666,10 +666,10 @@ Explicación del fallo: La salida "Transfer failed" indica que el servidor DNS r
 
 Sobre los números TTL (en transferencias exitosas): Cuando una transferencia de zona es exitosa, los números que aparecen antes de "IN" son valores TTL (Time To Live) que especifican:
 
--   **Finalidad**: Cuánto tiempo los resolvers pueden mantener cada registro en caché
--   **Formato**: Expresados en segundos
--   **Función**: Controlar la frecuencia de consultas al servidor autoritativo
--   **Ejemplo**: Un TTL de 86400 significa 24 horas de caché válido
+- **Finalidad**: Cuánto tiempo los resolvers pueden mantener cada registro en caché
+- **Formato**: Expresados en segundos
+- **Función**: Controlar la frecuencia de consultas al servidor autoritativo
+- **Ejemplo**: Un TTL de 86400 significa 24 horas de caché válido
 
 #### II. ¿Cuántos registros NS observa? Compare la respuesta con los servidores de DNS del dominio redes.unlp.edu.ar que dio anteriormente. ¿Puede explicar a qué se debe la diferencia y qué significa?
 
@@ -679,14 +679,14 @@ Análisis del resultado: La transferencia AXFR fue rechazada, probablemente debi
 
 Comparación teórica: Si la transferencia hubiera sido exitosa, deberíamos ver:
 
--   **En consulta NS anterior**: 2 registros (ns-sv-a y ns-sv-b)
--   **En transferencia completa**: Los mismos 2 registros NS más todos los demás registros de la zona
+- **En consulta NS anterior**: 2 registros (ns-sv-a y ns-sv-b)
+- **En transferencia completa**: Los mismos 2 registros NS más todos los demás registros de la zona
 
 Razones de la restricción:
 
--   **Seguridad**: Evita exposición de toda la estructura DNS del dominio
--   **Control de acceso**: Solo servidores secundarios autorizados pueden realizar transferencias
--   **Prevención de reconocimiento**: Impide que atacantes obtengan información completa de la zona
+- **Seguridad**: Evita exposición de toda la estructura DNS del dominio
+- **Control de acceso**: Solo servidores secundarios autorizados pueden realizar transferencias
+- **Prevención de reconocimiento**: Impide que atacantes obtengan información completa de la zona
 
 ### i. Consulte por el registro A de www.redes.unlp.edu.ar y luego por el registro A de www.practica.redes.unlp.edu.ar. Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).
 
@@ -748,24 +748,23 @@ Análisis de las consultas:
 
 **Primera consulta - www.redes.unlp.edu.ar:**
 
--   TTL: 300 segundos
--   Flags: `qr aa rd ra` (incluye flag `aa` - Authoritative Answer)
--   Query time: 0 msec
--   IP: 172.28.0.50
+- TTL: 300 segundos
+- Flags: `qr aa rd ra` (incluye flag `aa` - Authoritative Answer)
+- Query time: 0 msec
+- IP: 172.28.0.50
 
 **Segunda consulta - www.practica.redes.unlp.edu.ar:**
 
--   TTL: 60 segundos
--   Flags: `qr rd ra` (NO incluye flag `aa`)
--   Query time: 1464 msec
--   IP: 172.28.0.10
+- TTL: 60 segundos
+- Flags: `qr rd ra` (NO incluye flag `aa`)
+- Query time: 1464 msec
+- IP: 172.28.0.10
 
 **Explicación de las diferencias:**
 
 La diferencia clave está en la presencia del flag `aa` (Authoritative Answer):
 
 1. **www.redes.unlp.edu.ar** - Respuesta autoritativa:
-
     - El servidor 172.28.0.29 tiene autoridad directa sobre este registro
     - Query time de 0 msec indica respuesta desde base de datos local
     - TTL de 300 segundos es el valor configurado en la zona
@@ -777,8 +776,8 @@ La diferencia clave está en la presencia del flag `aa` (Authoritative Answer):
 
 **Al repetir las operaciones:**
 
--   El TTL de www.redes.unlp.edu.ar permanecería en 300 segundos (autoritativo)
--   El TTL de www.practica.redes.unlp.edu.ar disminuiría progresivamente mientras esté en caché del resolver
+- El TTL de www.redes.unlp.edu.ar permanecería en 300 segundos (autoritativo)
+- El TTL de www.practica.redes.unlp.edu.ar disminuiría progresivamente mientras esté en caché del resolver
 
 Esto demuestra la diferencia entre registros locales autoritativos versus registros externos que requieren resolución recursiva.
 
@@ -786,9 +785,9 @@ Esto demuestra la diferencia entre registros locales autoritativos versus regist
 
 ## 12. Investigue los comandos nslookup y host. ¿Para qué sirven? Intente con ambos comandos obtener:
 
--   Dirección IP de www.redes.unlp.edu.ar.
--   Servidores de correo del dominio redes.unlp.edu.ar.
--   Servidores de DNS del dominio redes.unlp.edu.ar.
+- Dirección IP de www.redes.unlp.edu.ar.
+- Servidores de correo del dominio redes.unlp.edu.ar.
+- Servidores de DNS del dominio redes.unlp.edu.ar.
 
 ## 13. ¿Qué función cumple en Linux/Unix el archivo /etc/hosts o en Windows el archivo `\WINDOWS\system32\drivers\etc\hosts?`
 
@@ -798,9 +797,9 @@ El archivo hosts es un mecanismo local de resolución de nombres que permite map
 
 Ubicación por sistema operativo:
 
--   **Linux/Unix**: `/etc/hosts`
--   **Windows**: `\WINDOWS\system32\drivers\etc\hosts`
--   **macOS**: `/etc/hosts`
+- **Linux/Unix**: `/etc/hosts`
+- **Windows**: `\WINDOWS\system32\drivers\etc\hosts`
+- **macOS**: `/etc/hosts`
 
 Funcionamiento:
 
@@ -1157,52 +1156,52 @@ Domain Name System (response)
 
 **Transaction ID**:
 
--   Wireshark: 0x47da
--   dig: id: 18394 (decimal) = 0x47da (hexadecimal) ✓ **Coincide exactamente**
+- Wireshark: 0x47da
+- dig: id: 18394 (decimal) = 0x47da (hexadecimal) ✓ **Coincide exactamente**
 
 **Flags DNS**:
 
--   Wireshark: 0x8580 = QR=1, AA=1, RD=1, RA=1
--   dig: "qr aa rd ra" ✓ **Coincide exactamente**
+- Wireshark: 0x8580 = QR=1, AA=1, RD=1, RA=1
+- dig: "qr aa rd ra" ✓ **Coincide exactamente**
 
 **Timing**:
 
--   Wireshark: Tiempo entre query y response: 0.001475886 seconds ≈ 1.48 msec
--   dig: Query time: 0 msec (redondeado, pero consistente con baja latencia)
+- Wireshark: Tiempo entre query y response: 0.001475886 seconds ≈ 1.48 msec
+- dig: Query time: 0 msec (redondeado, pero consistente con baja latencia)
 
 **Tamaños de mensaje**:
 
--   Wireshark: Query 58 bytes payload, Response 149 bytes payload
--   dig: MSG SIZE rcvd: 149 ✓ **Coincide exactamente en respuesta**
+- Wireshark: Query 58 bytes payload, Response 149 bytes payload
+- dig: MSG SIZE rcvd: 149 ✓ **Coincide exactamente en respuesta**
 
 **Secciones DNS**:
 
--   Wireshark Query: Questions: 1, Answer RRs: 0, Authority RRs: 0, Additional RRs: 1
--   dig Query: QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1 ✓ **Coincide**
--   Wireshark Response: Questions: 1, Answer RRs: 2, Authority RRs: 0, Additional RRs: 3
--   dig Response: QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 3 ✓ **Coincide**
+- Wireshark Query: Questions: 1, Answer RRs: 0, Authority RRs: 0, Additional RRs: 1
+- dig Query: QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1 ✓ **Coincide**
+- Wireshark Response: Questions: 1, Answer RRs: 2, Authority RRs: 0, Additional RRs: 3
+- dig Response: QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 3 ✓ **Coincide**
 
 **Consulta NS - Correlación de datos:**
 
 **Transaction ID**:
 
--   Wireshark: 0xad01
--   dig: id: 44289 (decimal) = 0xad01 (hexadecimal) ✓ **Coincide exactamente**
+- Wireshark: 0xad01
+- dig: id: 44289 (decimal) = 0xad01 (hexadecimal) ✓ **Coincide exactamente**
 
 **Flags DNS**:
 
--   Wireshark: 0x8580 = QR=1, AA=1, RD=1, RA=1
--   dig: "qr aa rd ra" ✓ **Coincide exactamente**
+- Wireshark: 0x8580 = QR=1, AA=1, RD=1, RA=1
+- dig: "qr aa rd ra" ✓ **Coincide exactamente**
 
 **Timing**:
 
--   Wireshark: Tiempo entre query y response: 0.001021918 seconds ≈ 1.02 msec
--   dig: Query time: 3 msec (diferencia por precisión de medición)
+- Wireshark: Tiempo entre query y response: 0.001021918 seconds ≈ 1.02 msec
+- dig: Query time: 3 msec (diferencia por precisión de medición)
 
 **Tamaños de mensaje**:
 
--   Wireshark: Query 58 bytes payload, Response 150 bytes payload
--   dig: MSG SIZE rcvd: 150 ✓ **Coincide exactamente**
+- Wireshark: Query 58 bytes payload, Response 150 bytes payload
+- dig: MSG SIZE rcvd: 150 ✓ **Coincide exactamente**
 
 **Información de red observada en Wireshark:**
 
@@ -1212,18 +1211,18 @@ Domain Name System (response)
 
 **Wireshark aporta:**
 
--   Visibilidad completa del intercambio de paquetes a nivel de red
--   Timing preciso de comunicación (microsegundos)
--   Headers completos de todas las capas (Ethernet, IP, UDP, DNS)
--   Detección de retransmisiones o problemas de red
--   Análisis de tráfico en tiempo real
+- Visibilidad completa del intercambio de paquetes a nivel de red
+- Timing preciso de comunicación (microsegundos)
+- Headers completos de todas las capas (Ethernet, IP, UDP, DNS)
+- Detección de retransmisiones o problemas de red
+- Análisis de tráfico en tiempo real
 
 **dig aporta:**
 
--   Interpretación estructurada y legible de contenido DNS
--   Análisis específico de registros DNS sin ruido de protocolo
--   Estadísticas de rendimiento (query time promedio)
--   Formateo amigable para análisis de registros específicos
+- Interpretación estructurada y legible de contenido DNS
+- Análisis específico de registros DNS sin ruido de protocolo
+- Estadísticas de rendimiento (query time promedio)
+- Formateo amigable para análisis de registros específicos
 
 **Conclusiones del análisis:**
 
@@ -1242,24 +1241,24 @@ La PC realiza **consultas recursivas** a su servidor DNS de la red.
 
 **Comportamiento del cliente (PC):**
 
--   Los clientes DNS (stub resolvers) están diseñados para realizar consultas recursivas por defecto
--   La PC envía una sola consulta al servidor DNS solicitando la resolución completa del nombre
--   Espera recibir directamente la respuesta final (dirección IP) o un error definitivo
--   No maneja el proceso de resolución iterativa entre múltiples servidores DNS
+- Los clientes DNS (stub resolvers) están diseñados para realizar consultas recursivas por defecto
+- La PC envía una sola consulta al servidor DNS solicitando la resolución completa del nombre
+- Espera recibir directamente la respuesta final (dirección IP) o un error definitivo
+- No maneja el proceso de resolución iterativa entre múltiples servidores DNS
 
 **Características de la consulta recursiva desde la PC:**
 
--   **Flag RD (Recursion Desired) = 1**: La PC solicita al servidor que realice la resolución completa
--   **Simplicidad operativa**: La PC delega toda la complejidad del proceso DNS al servidor
--   **Una sola transacción**: Un request-response entre PC y servidor DNS local
--   **Resultado definitivo**: La PC recibe la IP final o un mensaje de error (NXDOMAIN)
+- **Flag RD (Recursion Desired) = 1**: La PC solicita al servidor que realice la resolución completa
+- **Simplicidad operativa**: La PC delega toda la complejidad del proceso DNS al servidor
+- **Una sola transacción**: Un request-response entre PC y servidor DNS local
+- **Resultado definitivo**: La PC recibe la IP final o un mensaje de error (NXDOMAIN)
 
 **Ventajas para el cliente:**
 
--   Reduce la complejidad de implementación en aplicaciones
--   Minimiza el tráfico de red desde el cliente
--   Permite aprovechar el caché del servidor DNS local
--   Facilita el troubleshooting y mantenimiento
+- Reduce la complejidad de implementación en aplicaciones
+- Minimiza el tráfico de red desde el cliente
+- Permite aprovechar el caché del servidor DNS local
+- Facilita el troubleshooting y mantenimiento
 
 ### b. ¿Qué tipo de consultas (iterativas o recursivas) realiza el servidor de DNS para resolver requerimientos de usuario como el anterior? ¿A quién le realiza estas consultas?
 
@@ -1269,26 +1268,26 @@ El servidor DNS de la red realiza **consultas iterativas** para resolver las pet
 
 **1. Consulta a Root Servers:**
 
--   El servidor consulta uno de los 13 clusters de root servers (a.root-servers.net, b.root-servers.net, etc.)
--   Pregunta por el dominio solicitado (ej: www.unlp.edu.ar)
--   Root server responde con referencia a servidores TLD (.ar)
+- El servidor consulta uno de los 13 clusters de root servers (a.root-servers.net, b.root-servers.net, etc.)
+- Pregunta por el dominio solicitado (ej: www.unlp.edu.ar)
+- Root server responde con referencia a servidores TLD (.ar)
 
 **2. Consulta a servidores TLD:**
 
--   Consulta servidores autoritativos del dominio .ar
--   Recibe referencia hacia servidores autoritativos de unlp.edu.ar
+- Consulta servidores autoritativos del dominio .ar
+- Recibe referencia hacia servidores autoritativos de unlp.edu.ar
 
 **3. Consulta a servidores autoritativos:**
 
--   Consulta servidores DNS autoritativos de unlp.edu.ar
--   Obtiene la respuesta definitiva con la dirección IP de www.unlp.edu.ar
+- Consulta servidores DNS autoritativos de unlp.edu.ar
+- Obtiene la respuesta definitiva con la dirección IP de www.unlp.edu.ar
 
 **Características del proceso iterativo:**
 
--   **Múltiples consultas independientes**: Cada consulta retorna la mejor respuesta disponible
--   **Referencias progresivas**: Cada servidor proporciona información para continuar la búsqueda
--   **Control del proceso**: El servidor DNS local mantiene control total del proceso de resolución
--   **Distribución de carga**: Cada servidor DNS maneja solo su porción específica de la jerarquía
+- **Múltiples consultas independientes**: Cada consulta retorna la mejor respuesta disponible
+- **Referencias progresivas**: Cada servidor proporciona información para continuar la búsqueda
+- **Control del proceso**: El servidor DNS local mantiene control total del proceso de resolución
+- **Distribución de carga**: Cada servidor DNS maneja solo su porción específica de la jerarquía
 
 **Servidores consultados en orden jerárquico:**
 
@@ -1298,10 +1297,10 @@ El servidor DNS de la red realiza **consultas iterativas** para resolver las pet
 
 **Optimizaciones del servidor:**
 
--   **Caché de respuestas**: Almacena respuestas previas para evitar consultas repetidas
--   **Caché de NS records**: Mantiene información sobre servidores autoritativos
--   **Negative caching**: Cachea respuestas NXDOMAIN para evitar consultas inútiles
--   **Paralelización**: Puede realizar múltiples consultas simultáneamente para mejorar performance
+- **Caché de respuestas**: Almacena respuestas previas para evitar consultas repetidas
+- **Caché de NS records**: Mantiene información sobre servidores autoritativos
+- **Negative caching**: Cachea respuestas NXDOMAIN para evitar consultas inútiles
+- **Paralelización**: Puede realizar múltiples consultas simultáneamente para mejorar performance
 
 ## 16. Relacione DNS con HTTP. ¿Se puede navegar si no hay servicio de DNS?
 
@@ -1313,9 +1312,9 @@ DNS y HTTP están estrechamente relacionados en la navegación web, donde DNS ac
 
 **1. Proceso de navegación web típico:**
 
--   Usuario ingresa URL: `https://www.unlp.edu.ar/index.html`
--   **Fase DNS**: El navegador debe resolver `www.unlp.edu.ar` a una dirección IP
--   **Fase HTTP**: Solo después de obtener la IP, se establece conexión HTTP/HTTPS al servidor web
+- Usuario ingresa URL: `https://www.unlp.edu.ar/index.html`
+- **Fase DNS**: El navegador debe resolver `www.unlp.edu.ar` a una dirección IP
+- **Fase HTTP**: Solo después de obtener la IP, se establece conexión HTTP/HTTPS al servidor web
 
 **2. Flujo detallado de una petición web:**
 
@@ -1329,9 +1328,9 @@ DNS y HTTP están estrechamente relacionados en la navegación web, donde DNS ac
 
 **Interdependencia operativa:**
 
--   **DNS como prerequisito**: Sin resolución DNS exitosa, no es posible establecer conexiones HTTP
--   **Caché de navegador**: Los navegadores cachean resoluciones DNS para optimizar peticiones HTTP subsecuentes
--   **Headers HTTP Host**: HTTP/1.1 requiere header Host que contiene el nombre original, no la IP
+- **DNS como prerequisito**: Sin resolución DNS exitosa, no es posible establecer conexiones HTTP
+- **Caché de navegador**: Los navegadores cachean resoluciones DNS para optimizar peticiones HTTP subsecuentes
+- **Headers HTTP Host**: HTTP/1.1 requiere header Host que contiene el nombre original, no la IP
 
 **¿Se puede navegar sin servicio DNS?**
 
@@ -1341,9 +1340,9 @@ DNS y HTTP están estrechamente relacionados en la navegación web, donde DNS ac
 
 **1. Uso directo de direcciones IP:**
 
--   `http://163.10.5.15` en lugar de `http://www.unlp.edu.ar`
--   Funciona para sitios con IP fija y configuración adecuada
--   **Limitación**: Muchos servidores web modernos rechazan peticiones sin header Host válido
+- `http://163.10.5.15` en lugar de `http://www.unlp.edu.ar`
+- Funciona para sitios con IP fija y configuración adecuada
+- **Limitación**: Muchos servidores web modernos rechazan peticiones sin header Host válido
 
 **2. Configuración manual del archivo hosts:**
 
@@ -1352,43 +1351,43 @@ DNS y HTTP están estrechamente relacionados en la navegación web, donde DNS ac
 163.10.5.15    www.unlp.edu.ar
 ```
 
--   Proporciona resolución local sin DNS externo
--   **Ventaja**: Funciona completamente offline
--   **Limitación**: Requiere configuración manual y mantenimiento
+- Proporciona resolución local sin DNS externo
+- **Ventaja**: Funciona completamente offline
+- **Limitación**: Requiere configuración manual y mantenimiento
 
 **3. Uso de proxies con resolución DNS:**
 
--   Proxy realiza resolución DNS en nombre del cliente
--   Cliente se conecta al proxy, no directamente al sitio
--   **Limitación**: Requiere configuración de proxy funcional
+- Proxy realiza resolución DNS en nombre del cliente
+- Cliente se conecta al proxy, no directamente al sitio
+- **Limitación**: Requiere configuración de proxy funcional
 
 **Problemas de navegación sin DNS:**
 
 **Limitaciones técnicas:**
 
--   **Virtual hosting**: Servidores web que alojan múltiples dominios en una IP no pueden determinar qué sitio servir
--   **HTTPS/TLS**: Certificados SSL están vinculados a nombres de dominio, no IPs
--   **CDN y balanceadores**: Servicios distribuidos requieren resolución DNS para enrutamiento dinámico
--   **APIs y servicios**: Aplicaciones web modernas dependen de múltiples servicios que requieren DNS
+- **Virtual hosting**: Servidores web que alojan múltiples dominios en una IP no pueden determinar qué sitio servir
+- **HTTPS/TLS**: Certificados SSL están vinculados a nombres de dominio, no IPs
+- **CDN y balanceadores**: Servicios distribuidos requieren resolución DNS para enrutamiento dinámico
+- **APIs y servicios**: Aplicaciones web modernas dependen de múltiples servicios que requieren DNS
 
 **Limitaciones prácticas:**
 
--   **Memorización**: Imposible recordar direcciones IP de todos los sitios web
--   **Dinamismo**: Las IPs cambian frecuentemente por mantenimiento, CDN, balanceadores de carga
--   **Enlaces internos**: Links dentro de páginas web usan nombres de dominio, no IPs
+- **Memorización**: Imposible recordar direcciones IP de todos los sitios web
+- **Dinamismo**: Las IPs cambian frecuentemente por mantenimiento, CDN, balanceadores de carga
+- **Enlaces internos**: Links dentro de páginas web usan nombres de dominio, no IPs
 
 **Conclusión:** Aunque técnicamente es posible navegar sin DNS mediante direcciones IP directas o configuración manual de hosts, la navegación web moderna depende fundamentalmente de DNS para:
 
--   Resolución dinámica de nombres
--   Soporte de virtual hosting
--   Funcionamiento de HTTPS
--   Escalabilidad y distribución de servicios
+- Resolución dinámica de nombres
+- Soporte de virtual hosting
+- Funcionamiento de HTTPS
+- Escalabilidad y distribución de servicios
 
 La ausencia de DNS convierte la navegación web en una experiencia extremadamente limitada e impráctica para uso real.
 
 ## 17. Observar el siguiente gráfico y contestar:
 
-![Image de login](./resources/práctica-03/imagen-01.png)
+![Imagen](./resources/práctica-03/imagen-01.png)
 
 ### a. Si la PC-A, que usa como servidor de DNS a "DNS Server", desea obtener la IP de `www.unlp.edu.ar`, cuáles serían, y en qué orden, los pasos que se ejecutarán para obtener la respuesta.
 
@@ -1396,55 +1395,55 @@ La ausencia de DNS convierte la navegación web en una experiencia extremadament
 
 **1. Consulta inicial (PC-A → DNS Server):**
 
--   PC-A (192.168.10.5) envía consulta recursiva a DNS Server (192.168.10.2)
--   Solicita: "¿Cuál es la IP de www.unlp.edu.ar?"
--   DNS Server verifica su caché local (asumiendo que no tiene la entrada)
+- PC-A (192.168.10.5) envía consulta recursiva a DNS Server (192.168.10.2)
+- Solicita: "¿Cuál es la IP de www.unlp.edu.ar?"
+- DNS Server verifica su caché local (asumiendo que no tiene la entrada)
 
 **2. Consulta al Root Server (DNS Server → A.Root-Server):**
 
--   DNS Server consulta iterativamente a A.Root-Server (205.10.100.10)
--   Pregunta: "¿Dónde encuentro información sobre www.unlp.edu.ar?"
--   A.Root-Server responde: "Consulta los servidores .ar en a.dns.ar (200.108.145.50)"
+- DNS Server consulta iterativamente a A.Root-Server (205.10.100.10)
+- Pregunta: "¿Dónde encuentro información sobre www.unlp.edu.ar?"
+- A.Root-Server responde: "Consulta los servidores .ar en a.dns.ar (200.108.145.50)"
 
 **3. Consulta al servidor TLD .ar (DNS Server → a.dns.ar):**
 
--   DNS Server consulta a a.dns.ar (200.108.145.50)
--   Pregunta: "¿Dónde encuentro información sobre unlp.edu.ar?"
--   a.dns.ar responde: "Consulta los servidores .edu.ar en ns1.riu.edu.ar (170.210.0.18)"
+- DNS Server consulta a a.dns.ar (200.108.145.50)
+- Pregunta: "¿Dónde encuentro información sobre unlp.edu.ar?"
+- a.dns.ar responde: "Consulta los servidores .edu.ar en ns1.riu.edu.ar (170.210.0.18)"
 
 **4. Consulta al servidor edu.ar (DNS Server → ns1.riu.edu.ar):**
 
--   DNS Server consulta a ns1.riu.edu.ar (170.210.0.18)
--   Pregunta: "¿Dónde encuentro información sobre unlp.edu.ar?"
--   ns1.riu.edu.ar responde: "Consulta el servidor autoritativo unlp.unlp.edu.ar (163.10.0.67)"
+- DNS Server consulta a ns1.riu.edu.ar (170.210.0.18)
+- Pregunta: "¿Dónde encuentro información sobre unlp.edu.ar?"
+- ns1.riu.edu.ar responde: "Consulta el servidor autoritativo unlp.unlp.edu.ar (163.10.0.67)"
 
 **5. Consulta al servidor autoritativo (DNS Server → unlp.unlp.edu.ar):**
 
--   DNS Server consulta a unlp.unlp.edu.ar (163.10.0.67)
--   Pregunta: "¿Cuál es la IP de www.unlp.edu.ar?"
--   unlp.unlp.edu.ar responde: "www.unlp.edu.ar tiene IP 163.10.0.54"
+- DNS Server consulta a unlp.unlp.edu.ar (163.10.0.67)
+- Pregunta: "¿Cuál es la IP de www.unlp.edu.ar?"
+- unlp.unlp.edu.ar responde: "www.unlp.edu.ar tiene IP 163.10.0.54"
 
 **6. Respuesta final (DNS Server → PC-A):**
 
--   DNS Server almacena la respuesta en su caché
--   DNS Server responde a PC-A con la IP: 163.10.0.54
--   PC-A puede ahora conectarse directamente a www.unlp.edu.ar
+- DNS Server almacena la respuesta en su caché
+- DNS Server responde a PC-A con la IP: 163.10.0.54
+- PC-A puede ahora conectarse directamente a www.unlp.edu.ar
 
 ### b. ¿Dónde es recursiva la consulta? ¿Y dónde iterativa?
 
 **Consulta RECURSIVA:**
 
--   **Ubicación**: Entre PC-A (192.168.10.5) y DNS Server (192.168.10.2)
--   **Características**:
-    -   PC-A solicita resolución completa al DNS Server
-    -   PC-A espera recibir la respuesta final (163.10.0.54) o un error
-    -   DNS Server asume toda la responsabilidad de encontrar la respuesta
-    -   Una sola transacción desde la perspectiva de PC-A
+- **Ubicación**: Entre PC-A (192.168.10.5) y DNS Server (192.168.10.2)
+- **Características**:
+    - PC-A solicita resolución completa al DNS Server
+    - PC-A espera recibir la respuesta final (163.10.0.54) o un error
+    - DNS Server asume toda la responsabilidad de encontrar la respuesta
+    - Una sola transacción desde la perspectiva de PC-A
 
 **Consultas ITERATIVAS:**
 
--   **Ubicación**: Todas las comunicaciones del DNS Server con otros servidores DNS
--   **Secuencia iterativa**:
+- **Ubicación**: Todas las comunicaciones del DNS Server con otros servidores DNS
+- **Secuencia iterativa**:
     1. DNS Server ↔ A.Root-Server (205.10.100.10)
     2. DNS Server ↔ a.dns.ar (200.108.145.50)
     3. DNS Server ↔ ns1.riu.edu.ar (170.210.0.18)
@@ -1452,17 +1451,17 @@ La ausencia de DNS convierte la navegación web en una experiencia extremadament
 
 **Características de las consultas iterativas:**
 
--   Cada servidor proporciona la mejor respuesta disponible o una referencia
--   DNS Server debe seguir manualmente cada referencia recibida
--   Múltiples consultas independientes hasta obtener la respuesta final
--   Cada servidor DNS maneja solo su porción de la jerarquía
+- Cada servidor proporciona la mejor respuesta disponible o una referencia
+- DNS Server debe seguir manualmente cada referencia recibida
+- Múltiples consultas independientes hasta obtener la respuesta final
+- Cada servidor DNS maneja solo su porción de la jerarquía
 
 **Justificación del diseño:**
 
--   **Cliente simple**: PC-A no necesita conocer la jerarquía DNS
--   **Servidor eficiente**: DNS Server puede cachear resultados intermedios
--   **Distribución de carga**: Cada servidor DNS autoriza solo su dominio específico
--   **Escalabilidad**: El modelo permite crecimiento distribuido de Internet
+- **Cliente simple**: PC-A no necesita conocer la jerarquía DNS
+- **Servidor eficiente**: DNS Server puede cachear resultados intermedios
+- **Distribución de carga**: Cada servidor DNS autoriza solo su dominio específico
+- **Escalabilidad**: El modelo permite crecimiento distribuido de Internet
 
 ## 18. ¿A quién debería consultar para que la respuesta sobre www.google.com sea autoritativa?
 
@@ -1549,18 +1548,18 @@ google.com.		60	IN	SOA	ns1.google.com. dns-admin.google.com. 835835398 900 900 1
 
 **Servidores autoritativos de Google (según consulta NS):**
 
--   **ns1.google.com** (216.239.32.10) - _servidor primario según SOA_
--   **ns2.google.com** (216.239.34.10)
--   **ns3.google.com** (216.239.36.10)
--   **ns4.google.com** (216.239.38.10)
+- **ns1.google.com** (216.239.32.10) - _servidor primario según SOA_
+- **ns2.google.com** (216.239.34.10)
+- **ns3.google.com** (216.239.36.10)
+- **ns4.google.com** (216.239.38.10)
 
 **Información adicional obtenida:**
 
--   **TTL**: 172799 segundos (~48 horas) para registros NS
--   **Direcciones IPv6**: Cada servidor NS también tiene registro AAAA (2001:4860:4802:xx::a)
--   **SOA**: ns1.google.com es el servidor primario con email de contacto dns-admin.google.com
--   **Serial**: 835835398 (formato personalizado de Google, no YYYYMMDDNN estándar)
--   **Refresh**: 900 segundos (15 minutos) - muy frecuente para una zona dinámica
+- **TTL**: 172799 segundos (~48 horas) para registros NS
+- **Direcciones IPv6**: Cada servidor NS también tiene registro AAAA (2001:4860:4802:xx::a)
+- **SOA**: ns1.google.com es el servidor primario con email de contacto dns-admin.google.com
+- **Serial**: 835835398 (formato personalizado de Google, no YYYYMMDDNN estándar)
+- **Refresh**: 900 segundos (15 minutos) - muy frecuente para una zona dinámica
 
 **Consulta autoritativa directa:**
 
@@ -1574,30 +1573,30 @@ dig @216.239.32.10 www.google.com
 
 **Características de la respuesta autoritativa:**
 
--   **Flag AA (Authoritative Answer) = 1**: Confirma autoridad sobre el dominio
--   **Sin caché**: La información proviene directamente de la base de datos oficial
--   **Información actualizada**: Refleja el estado actual según el administrador del dominio
--   **TTL original**: Muestra los valores TTL configurados por el propietario del dominio
+- **Flag AA (Authoritative Answer) = 1**: Confirma autoridad sobre el dominio
+- **Sin caché**: La información proviene directamente de la base de datos oficial
+- **Información actualizada**: Refleja el estado actual según el administrador del dominio
+- **TTL original**: Muestra los valores TTL configurados por el propietario del dominio
 
 **¿Por qué es importante la respuesta autoritativa?**
 
 **1. Garantía de veracidad:**
 
--   La información proviene del propietario oficial del dominio
--   Elimina posibles inconsistencias de caché desactualizado
--   Proporciona la versión "de oro" de los registros DNS
+- La información proviene del propietario oficial del dominio
+- Elimina posibles inconsistencias de caché desactualizado
+- Proporciona la versión "de oro" de los registros DNS
 
 **2. Troubleshooting:**
 
--   Confirma si cambios DNS se propagaron correctamente
--   Distingue entre problemas de configuración vs. problemas de caché
--   Valida la configuración real del dominio
+- Confirma si cambios DNS se propagaron correctamente
+- Distingue entre problemas de configuración vs. problemas de caché
+- Valida la configuración real del dominio
 
 **3. Verificación de cambios:**
 
--   Confirma modificaciones recientes en registros DNS
--   Verifica configuración después de migraciones
--   Audita configuración de seguridad (SPF, DMARC, DKIM)
+- Confirma modificaciones recientes en registros DNS
+- Verifica configuración después de migraciones
+- Audita configuración de seguridad (SPF, DMARC, DKIM)
 
 **Proceso completo para respuesta autoritativa:**
 
@@ -1615,8 +1614,8 @@ dig @ns1.google.com www.google.com
 
 **Paso 3: Verificar flag AA en la respuesta**
 
--   Buscar "aa" en la línea de flags
--   Confirmar que la respuesta es autoritativa
+- Buscar "aa" en la línea de flags
+- Confirmar que la respuesta es autoritativa
 
 **Ejemplo de respuesta autoritativa:**
 
@@ -1673,11 +1672,11 @@ dig @ns1.google.com www.info.unlp.edu.ar
 
 **Análisis del resultado:**
 
--   **Status: REFUSED** - El servidor rechaza la consulta
--   **Flags: qr rd** - Solo Query Response y Recursion Desired, sin AA (no autoritativo) ni RA (recursión no disponible)
--   **WARNING**: "recursion requested but not available" confirma que el servidor autoritativo no procesa consultas recursivas
--   **Sin sección ANSWER**: No proporciona información sobre el dominio consultado
--   **Query time: 43 msec** - Respuesta rápida del rechazo
+- **Status: REFUSED** - El servidor rechaza la consulta
+- **Flags: qr rd** - Solo Query Response y Recursion Desired, sin AA (no autoritativo) ni RA (recursión no disponible)
+- **WARNING**: "recursion requested but not available" confirma que el servidor autoritativo no procesa consultas recursivas
+- **Sin sección ANSWER**: No proporciona información sobre el dominio consultado
+- **Query time: 43 msec** - Respuesta rápida del rechazo
 
 **Escenario 2: Consulta a 8.8.8.8 (Google Public DNS) por www.info.unlp.edu.ar**
 
@@ -1713,11 +1712,11 @@ www.info.unlp.edu.ar.	300	IN	A	163.10.5.71
 
 **Análisis del resultado:**
 
--   **Status: NOERROR** - Consulta procesada exitosamente
--   **Flags: qr rd ra** - Query Response, Recursion Desired y Recursion Available (sin AA, respuesta no autoritativa)
--   **ANSWER Section**: www.info.unlp.edu.ar resuelve a 163.10.5.71
--   **TTL: 300 segundos** - El registro se mantiene en caché 5 minutos
--   **Query time: 75 msec** - Mayor latencia debido a resolución recursiva
+- **Status: NOERROR** - Consulta procesada exitosamente
+- **Flags: qr rd ra** - Query Response, Recursion Desired y Recursion Available (sin AA, respuesta no autoritativa)
+- **ANSWER Section**: www.info.unlp.edu.ar resuelve a 163.10.5.71
+- **TTL: 300 segundos** - El registro se mantiene en caché 5 minutos
+- **Query time: 75 msec** - Mayor latencia debido a resolución recursiva
 
 **Comparación de comportamientos observados:**
 
@@ -1810,16 +1809,16 @@ Registros A (IPv4) y AAAA (IPv6) para los servidores MX mencionados en la respue
 
 **Justificación:**
 
--   En los flags `qr rd ra` **no aparece AA** (Authoritative Answer)
--   La presencia del flag **ra** (Recursion Available) indica que la respuesta proviene de un resolver recursivo
--   La sección AUTHORITY contiene registros NS, lo que confirma que el servidor consultado no es autoritativo
+- En los flags `qr rd ra` **no aparece AA** (Authoritative Answer)
+- La presencia del flag **ra** (Recursion Available) indica que la respuesta proviene de un resolver recursivo
+- La sección AUTHORITY contiene registros NS, lo que confirma que el servidor consultado no es autoritativo
 
 **Para obtener respuesta autoritativa:** Consultar directamente a cualquiera de los servidores NS listados en la sección AUTHORITY:
 
--   ss00.ejemplo.com
--   ss01.ejemplo.com
--   ss02.ejemplo.com
--   ss03.ejemplo.com
+- ss00.ejemplo.com
+- ss01.ejemplo.com
+- ss02.ejemplo.com
+- ss03.ejemplo.com
 
 **Comando ejemplo:**
 
@@ -1831,14 +1830,14 @@ dig @ss00.ejemplo.com ejemplo.com MX
 
 **La consulta SÍ fue recursiva:**
 
--   Flag **rd** (Recursion Desired) presente en la respuesta
--   El cliente solicita que el servidor resuelva la consulta recursivamente
+- Flag **rd** (Recursion Desired) presente en la respuesta
+- El cliente solicita que el servidor resuelva la consulta recursivamente
 
 **La respuesta SÍ es recursiva:**
 
--   Flag **ra** (Recursion Available) presente
--   El servidor procesó la consulta recursivamente consultando otros servidores DNS
--   La ausencia del flag AA confirma que el servidor actuó como resolver recursivo
+- Flag **ra** (Recursion Available) presente
+- El servidor procesó la consulta recursivamente consultando otros servidores DNS
+- La ausencia del flag AA confirma que el servidor actuó como resolver recursivo
 
 ### d. ¿Qué representan los valores 10 y 5 en las líneas (1) y (2)?
 
@@ -1846,9 +1845,9 @@ dig @ss00.ejemplo.com ejemplo.com MX
 
 **Funcionamiento:**
 
--   **Valor más bajo = mayor prioridad**
--   **srv00.ejemplo.com (prioridad 5)**: Servidor de correo primario
--   **srv01.ejemplo.com (prioridad 10)**: Servidor de correo secundario/respaldo
+- **Valor más bajo = mayor prioridad**
+- **srv00.ejemplo.com (prioridad 5)**: Servidor de correo primario
+- **srv01.ejemplo.com (prioridad 10)**: Servidor de correo secundario/respaldo
 
 **Proceso de entrega de correo:**
 
@@ -1866,21 +1865,25 @@ ejemplo.com. MX 10 srv01.ejemplo.com.  ; Servidor secundario
 ### Explicación de secciones en respuestas dig
 
 **QUESTION SECTION:**
+
 - Contiene la consulta DNS original realizada por el cliente
 - Formato: `nombre_dominio. clase tipo_registro`
 - Ejemplo: `ejemplo.com. IN MX` (consulta por registros MX de ejemplo.com)
 
 **ANSWER SECTION:**
+
 - Contiene la respuesta directa a la pregunta formulada
 - Incluye los registros DNS que coinciden exactamente con la consulta
 - Si está vacía, significa que no hay registros del tipo solicitado
 
 **AUTHORITY SECTION:**
+
 - Lista los servidores DNS autoritativos para el dominio consultado
 - Contiene registros NS que indican qué servidores tienen autoridad sobre la zona
 - Útil para identificar dónde obtener respuestas autoritativas
 
 **ADDITIONAL SECTION:**
+
 - Proporciona información complementaria para evitar consultas adicionales
 - Incluye registros A/AAAA de servidores mencionados en ANSWER o AUTHORITY
 - Optimiza el proceso DNS al entregar IPs de servidores referenciados
